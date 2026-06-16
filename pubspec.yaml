@@ -40,6 +40,7 @@ dependencies:
   cached_network_image: ^3.3.0 # Meal photos load
   flutter_svg: ^2.0.9   # SVG icons
   google_fonts: ^6.1.0  # Custom fonts
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
