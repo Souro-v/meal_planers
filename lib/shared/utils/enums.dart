@@ -1,0 +1,1 @@
+enum FieldState { normal, error, success }

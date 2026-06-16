@@ -1,3 +1,1 @@
-class AppPages {
-
-}
+class AppPages {}
