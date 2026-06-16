@@ -118,7 +118,7 @@ class SignUpScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: active && !c.isLoading.value
+                    onPressed: active && !c.isSignUpLoading.value
                         ? c.signUp : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
@@ -128,7 +128,7 @@ class SignUpScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                     ),
-                    child: c.isLoading.value
+                    child: c.isSignUpLoading.value
                         ? const SizedBox(
                       width: 22, height: 22,
                       child: CircularProgressIndicator(
