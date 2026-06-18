@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../app/themes/app_colors.dart';
+import '../../meals/widgets/guide_popover.dart';
 
 class MealPlanScreen extends StatelessWidget {
   const MealPlanScreen({super.key});
@@ -32,7 +33,7 @@ class MealPlanScreen extends StatelessWidget {
               // ── Subtitle ──
               const Text(
                 'Plan your meals for the entire week in minutes. '
-                    'Build your first meal plan to get started!',
+                'Build your first meal plan to get started!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,
@@ -48,13 +49,19 @@ class MealPlanScreen extends StatelessWidget {
                 height: 52,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: navigate to meal builder
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => const GuidePopover(),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   child: const Text(
                     'Build Your First Meal Plan',

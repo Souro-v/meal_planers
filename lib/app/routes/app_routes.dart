@@ -6,6 +6,7 @@ import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/verify_code_screen.dart';
 import '../../features/home/screens/main_screen.dart';
+import '../../features/meals/screens/build_meal_plan_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/onboarding/screens/select_diet_screen.dart';
 import '../../features/onboarding/screens/select_allergies_screen.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const selectServings = '/select-servings';
   static const setReminder = '/set-reminder';
   static const home = '/home';
+  static const buildMealPlan = '/build-meal-plan';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -44,5 +46,6 @@ class AppRoutes {
     GetPage(name: selectServings, page: () => const SelectServingsScreen()),
     GetPage(name: setReminder, page: () => const SetReminderScreen()),
     GetPage(name: home, page: () => const MainScreen()),
+    GetPage(name: buildMealPlan, page: () => const BuildMealPlanScreen()),
   ];
 }
