@@ -7,7 +7,6 @@ import '../widgets/selection_chip.dart';
 
 class SelectAllergiesScreen extends StatelessWidget {
   const SelectAllergiesScreen({super.key});
-
   static const _allergies = [
     'Gluten',
     'Peanut',
@@ -18,7 +17,6 @@ class SelectAllergiesScreen extends StatelessWidget {
     'Sulfite',
     'Nightshade',
   ];
-
   @override
   Widget build(BuildContext context) {
     final c = Get.find<PreferenceController>();

@@ -5,6 +5,7 @@ import '../../features/auth/screens/reset_password_screen.dart';
 import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/verify_code_screen.dart';
+import '../../features/home/screens/main_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/onboarding/screens/select_diet_screen.dart';
 import '../../features/onboarding/screens/select_allergies_screen.dart';
@@ -42,5 +43,6 @@ class AppRoutes {
     GetPage(name: selectDislikes, page: () => const SelectDislikesScreen()),
     GetPage(name: selectServings, page: () => const SelectServingsScreen()),
     GetPage(name: setReminder, page: () => const SetReminderScreen()),
+    GetPage(name: home, page: () => const MainScreen()),
   ];
 }
