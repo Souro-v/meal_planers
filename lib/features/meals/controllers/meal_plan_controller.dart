@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import '../models/meal_model.dart';
 
 class MealPlanController extends GetxController {
-
   final addedMealIds = <String>[].obs;
 
   void toggleMeal(String id) {
@@ -35,11 +34,26 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'salt & pepper', quantity: 'to taste'),
       ],
       instructions: [
-        'Preheat oven to 400°F. Trim and halve brussels sprouts, toss with olive oil, salt, and pepper.',
-        'Spread brussels sprouts on a baking sheet and roast for 20–25 minutes until golden and crispy.',
-        'Meanwhile, boil potatoes until tender. Drain and mash with butter, salt, and pepper.',
-        'Slice sausage and pan-fry in a skillet over medium heat until browned on both sides.',
-        'Assemble bowls with mashed potato base, roasted sprouts, and sausage slices on top.',
+        InstructionModel(
+          step: 'Preheat oven to 400°F. Trim and halve brussels sprouts, toss with olive oil, salt, and pepper.',
+          items: ['1 lb brussels sprouts', '2 tbsp olive oil', 'salt & pepper to taste'],
+        ),
+        InstructionModel(
+          step: 'Spread brussels sprouts on a baking sheet and roast for 20–25 minutes until golden and crispy.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Meanwhile, boil potatoes until tender. Drain and mash with butter, salt, and pepper.',
+          items: ['2 large potatoes', '2 tbsp butter', 'salt & pepper to taste'],
+        ),
+        InstructionModel(
+          step: 'Slice sausage and pan-fry in a skillet over medium heat until browned on both sides.',
+          items: ['2 sausage links'],
+        ),
+        InstructionModel(
+          step: 'Assemble bowls with mashed potato base, roasted sprouts, and sausage slices on top.',
+          items: [],
+        ),
       ],
     ),
     MealModel(
@@ -59,10 +73,22 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'olive oil', quantity: '2 tbsp'),
       ],
       instructions: [
-        'Preheat oven to 425°F. Toss cauliflower with olive oil, cumin, salt, and roast for 25 minutes.',
-        'Cook basmati rice according to package instructions. Fluff with a fork.',
-        'Drain and rinse black beans. Warm in a saucepan over low heat with a pinch of cumin.',
-        'Assemble bowls: rice base, roasted cauliflower, black beans. Top with cilantro and lime juice.',
+        InstructionModel(
+          step: 'Preheat oven to 425°F. Toss cauliflower with olive oil, cumin, and salt. Roast for 25 minutes.',
+          items: ['3 cups cauliflower florets', '2 tbsp olive oil', '1 tsp cumin'],
+        ),
+        InstructionModel(
+          step: 'Cook basmati rice according to package instructions. Fluff with a fork when done.',
+          items: ['1 cup basmati rice'],
+        ),
+        InstructionModel(
+          step: 'Drain and rinse black beans. Warm in a saucepan over low heat with a pinch of cumin.',
+          items: ['1 can black beans'],
+        ),
+        InstructionModel(
+          step: 'Assemble bowls with rice base, roasted cauliflower, and black beans. Top with cilantro and lime juice.',
+          items: ['¼ cup chopped cilantro', '2 tbsp lime juice'],
+        ),
       ],
     ),
     MealModel(
@@ -82,11 +108,22 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'vegetable broth', quantity: '½ cup'),
       ],
       instructions: [
-        'Cook pasta according to package directions. Reserve ½ cup pasta water before draining.',
-        'Blend soaked cashews with garlic, nutritional yeast, and vegetable broth until smooth.',
-        'Slice zucchini and vegan sausage. Sauté in skillet over medium-high heat for 5–7 minutes.',
-        'Add cashew cream to the skillet, stir in pasta and pasta water. Toss until well coated.',
-        'Season with salt, pepper, and serve immediately.',
+        InstructionModel(
+          step: 'Cook pasta according to package directions. Reserve ½ cup pasta water before draining.',
+          items: ['200g pasta'],
+        ),
+        InstructionModel(
+          step: 'Blend soaked cashews with garlic, nutritional yeast, and vegetable broth until completely smooth.',
+          items: ['½ cup soaked cashews', '2 cloves garlic', '2 tbsp nutritional yeast', '½ cup vegetable broth'],
+        ),
+        InstructionModel(
+          step: 'Slice zucchini and vegan sausage. Sauté in skillet over medium-high heat for 5–7 minutes until golden.',
+          items: ['2 medium zucchini', '2 vegan sausage links'],
+        ),
+        InstructionModel(
+          step: 'Add cashew cream to skillet, stir in pasta and reserved pasta water. Toss until well coated and serve immediately.',
+          items: [],
+        ),
       ],
     ),
   ];
@@ -112,17 +149,30 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'grape tomatoes', quantity: '½ pint'),
         IngredientModel(name: 'jalapeño pepper', quantity: '1'),
         IngredientModel(name: 'yellow onion', quantity: '1 medium'),
-        IngredientModel(name: 'cinnamon, ground', quantity: '1 tsp'),
         IngredientModel(name: 'garam masala', quantity: '2 tsp'),
         IngredientModel(name: 'butter', quantity: '2 tbsp'),
       ],
       instructions: [
-        'Cook basmati rice with broth in a saucepan over medium heat for 18–20 minutes.',
-        'Sauté diced onion, garlic, and ginger in butter until golden and fragrant.',
-        'Add grape tomatoes, jalapeño, garam masala, and cinnamon. Cook for 5 minutes.',
-        'Blend the tomato mixture until smooth. Return to pan and stir in coconut milk.',
-        'Add chicken and simmer in the sauce for 15 minutes until cooked through.',
-        'Serve over basmati rice and garnish generously with fresh cilantro.',
+        InstructionModel(
+          step: 'Using a strainer or colander, rinse the rice under cold running water, then drain and transfer to a small saucepan. Add broth and bring the mixture to a boil over high heat.',
+          items: ['½ cup basmati rice', '8 fl oz (1 cup) chicken or vegetable broth'],
+        ),
+        InstructionModel(
+          step: 'Meanwhile, wash and dry the fresh produce.',
+          items: ['1 (1 inch) piece ginger root', '1 jalapeño pepper', '½ small bunch cilantro', '½ pint grape tomatoes'],
+        ),
+        InstructionModel(
+          step: 'Once the liquid comes to a boil, stir the mixture, cover the saucepan, and reduce heat to low. Cook rice until liquid is fully absorbed, 15–18 minutes. Once done, remove from heat and let it stand.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Sauté diced onion, garlic, and ginger in butter until golden. Add tomatoes, jalapeño, and garam masala. Cook for 5 minutes then blend smooth.',
+          items: ['1 medium yellow onion', '1 inch garlic', '2 tbsp butter', '2 tsp garam masala'],
+        ),
+        InstructionModel(
+          step: 'Return blended sauce to pan. Stir in coconut milk and simmer for 10 minutes. Serve over rice and garnish with fresh cilantro.',
+          items: ['½ can coconut milk', '½ small bunch cilantro'],
+        ),
       ],
     ),
     MealModel(
@@ -145,11 +195,26 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'dried oregano', quantity: '1 tsp'),
       ],
       instructions: [
-        'Chop romaine lettuce and place in a large salad bowl.',
-        'Dice cucumber and halve the cherry tomatoes. Thinly slice red onion.',
-        'Add vegetables to the bowl along with kalamata olives.',
-        'Whisk together olive oil, lemon juice, and oregano for the dressing.',
-        'Pour dressing over salad and toss gently. Top with crumbled feta cheese.',
+        InstructionModel(
+          step: 'Wash and chop romaine lettuce into bite-sized pieces. Place in a large salad bowl.',
+          items: ['1 head romaine lettuce'],
+        ),
+        InstructionModel(
+          step: 'Dice cucumber, halve cherry tomatoes, and thinly slice red onion. Add all to the bowl.',
+          items: ['1 large cucumber', '1 cup cherry tomatoes', '¼ medium red onion'],
+        ),
+        InstructionModel(
+          step: 'Add kalamata olives to the bowl.',
+          items: ['½ cup kalamata olives'],
+        ),
+        InstructionModel(
+          step: 'Whisk together olive oil, lemon juice, and oregano to make the dressing. Pour over salad and toss gently.',
+          items: ['3 tbsp olive oil', '2 tbsp lemon juice', '1 tsp dried oregano'],
+        ),
+        InstructionModel(
+          step: 'Crumble feta cheese generously on top and serve immediately.',
+          items: ['100g feta cheese'],
+        ),
       ],
     ),
     MealModel(
@@ -167,15 +232,28 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'olive oil', quantity: '3 tbsp'),
         IngredientModel(name: 'parmesan cheese', quantity: '¼ cup grated'),
         IngredientModel(name: 'red pepper flakes', quantity: '½ tsp'),
-        IngredientModel(name: 'salt', quantity: 'to taste'),
       ],
       instructions: [
-        'Boil a large pot of salted water and cook spaghetti until al dente.',
-        'In a skillet, sauté sliced garlic in olive oil until golden. Add red pepper flakes.',
-        'Pour in crushed tomatoes and simmer for 10 minutes. Season with salt.',
-        'Drain pasta, reserving ¼ cup pasta water. Add pasta to the sauce.',
-        'Toss everything together, adding pasta water as needed. Stir in fresh basil.',
-        'Plate and top with grated parmesan cheese.',
+        InstructionModel(
+          step: 'Boil a large pot of salted water. Cook spaghetti until al dente per package instructions.',
+          items: ['200g spaghetti'],
+        ),
+        InstructionModel(
+          step: 'In a skillet, sauté sliced garlic in olive oil over medium heat until golden. Add red pepper flakes.',
+          items: ['3 cloves garlic', '3 tbsp olive oil', '½ tsp red pepper flakes'],
+        ),
+        InstructionModel(
+          step: 'Pour in crushed tomatoes and simmer for 10 minutes. Season with salt to taste.',
+          items: ['1 can crushed tomatoes'],
+        ),
+        InstructionModel(
+          step: 'Drain pasta, reserving ¼ cup pasta water. Add pasta to sauce and toss. Add pasta water as needed.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Stir in fresh basil. Plate and top with grated parmesan cheese.',
+          items: ['¼ cup fresh basil leaves', '¼ cup grated parmesan cheese'],
+        ),
       ],
     ),
   ];
@@ -200,11 +278,22 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'salt & pepper', quantity: 'to taste'),
       ],
       instructions: [
-        'Toast sourdough bread until golden and crisp.',
-        'Mash avocados with lemon juice, salt, and pepper in a bowl.',
-        'Poach eggs in simmering water for 3–4 minutes until whites are set.',
-        'Spread avocado mash on toast. Top each with a poached egg.',
-        'Season with salt, pepper, and chili flakes. Serve immediately.',
+        InstructionModel(
+          step: 'Toast sourdough bread slices until golden and crispy on both sides.',
+          items: ['4 slices sourdough bread'],
+        ),
+        InstructionModel(
+          step: 'Mash avocados with lemon juice, salt, and pepper until smooth but slightly chunky.',
+          items: ['2 ripe avocados', '1 tbsp lemon juice', 'salt & pepper to taste'],
+        ),
+        InstructionModel(
+          step: 'Bring a saucepan of water to a gentle simmer. Poach eggs for 3–4 minutes until whites are set.',
+          items: ['4 large eggs'],
+        ),
+        InstructionModel(
+          step: 'Spread avocado mash generously on toast. Top each with a poached egg and sprinkle chili flakes.',
+          items: ['½ tsp red chili flakes'],
+        ),
       ],
     ),
     MealModel(
@@ -225,12 +314,26 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'jasmine rice', quantity: '1 cup'),
       ],
       instructions: [
-        'Cook jasmine rice according to package instructions.',
-        'Mix soy sauce, honey, sesame oil, and minced garlic for teriyaki sauce.',
-        'Steam broccoli florets for 5–6 minutes until tender-crisp.',
-        'Sear salmon fillets in a hot skillet for 3–4 minutes per side.',
-        'Brush teriyaki sauce over salmon in the last 2 minutes of cooking.',
-        'Serve salmon over rice with steamed broccoli. Sprinkle sesame seeds on top.',
+        InstructionModel(
+          step: 'Cook jasmine rice according to package instructions. Keep warm until ready to serve.',
+          items: ['1 cup jasmine rice'],
+        ),
+        InstructionModel(
+          step: 'Mix soy sauce, honey, sesame oil, and minced garlic together to make teriyaki sauce.',
+          items: ['3 tbsp soy sauce', '2 tbsp honey', '1 tsp sesame oil', '2 cloves garlic'],
+        ),
+        InstructionModel(
+          step: 'Steam broccoli florets for 5–6 minutes until tender-crisp. Season lightly with salt.',
+          items: ['2 cups broccoli florets'],
+        ),
+        InstructionModel(
+          step: 'Sear salmon in a hot skillet for 3–4 minutes per side. Brush teriyaki sauce in the last 2 minutes.',
+          items: ['2 salmon fillets (6 oz each)'],
+        ),
+        InstructionModel(
+          step: 'Serve salmon over rice with steamed broccoli. Sprinkle sesame seeds on top.',
+          items: ['1 tbsp sesame seeds'],
+        ),
       ],
     ),
     MealModel(
@@ -251,12 +354,26 @@ class MealPlanController extends GetxController {
         IngredientModel(name: 'sesame oil', quantity: '1 tbsp'),
       ],
       instructions: [
-        'Cook brown rice according to package directions (about 25 minutes).',
-        'Press tofu dry with paper towels and cut into cubes. Pan-fry until golden on all sides.',
-        'Slice bell peppers and carrots into thin strips.',
-        'Stir-fry vegetables in sesame oil on high heat for 5–6 minutes.',
-        'Add tofu back in. Pour soy sauce and grated ginger over everything. Toss well.',
-        'Serve over brown rice immediately.',
+        InstructionModel(
+          step: 'Cook brown rice according to package directions, about 25 minutes. Keep warm.',
+          items: ['1 cup brown rice'],
+        ),
+        InstructionModel(
+          step: 'Press tofu dry with paper towels and cut into 1-inch cubes. Pan-fry in sesame oil until golden on all sides.',
+          items: ['200g firm tofu', '1 tbsp sesame oil'],
+        ),
+        InstructionModel(
+          step: 'Slice bell peppers and carrots into thin strips.',
+          items: ['2 mixed bell peppers', '2 medium carrots'],
+        ),
+        InstructionModel(
+          step: 'Stir-fry vegetables and snap peas in the same wok on high heat for 5–6 minutes until slightly charred.',
+          items: ['1 cup snap peas'],
+        ),
+        InstructionModel(
+          step: 'Add tofu back in. Pour soy sauce and grated ginger over everything. Toss well and serve over brown rice.',
+          items: ['2 tbsp soy sauce', '1 inch piece ginger root'],
+        ),
       ],
     ),
   ];

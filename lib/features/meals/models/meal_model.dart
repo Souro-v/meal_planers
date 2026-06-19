@@ -17,7 +17,7 @@ class MealModel {
   final int servings;
   final List<String> cookware;
   final List<IngredientModel> ingredients;
-  final List<String> instructions;
+  final List<InstructionModel> instructions;
 
   const MealModel({
     required this.id,
@@ -31,3 +31,13 @@ class MealModel {
     this.instructions = const [],
   });
 }
+class InstructionModel {
+  final String step;
+  final List<String> items; //step ingredients
+
+  const InstructionModel({
+    required this.step,
+    this.items = const [],
+  });
+}
+
