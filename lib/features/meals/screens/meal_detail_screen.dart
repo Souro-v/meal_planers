@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/meal_detail_controller.dart';
 import '../models/meal_model.dart';
@@ -419,7 +420,7 @@ class _BottomBar extends StatelessWidget {
           // Cooked? button
           Expanded(
             child: OutlinedButton.icon(
-              onPressed: () {},
+              onPressed: () => Get.toNamed(AppRoutes.feedback),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: AppColors.border),
                 shape: RoundedRectangleBorder(
@@ -477,13 +478,13 @@ class _ActionMenu extends StatelessWidget {
   const _ActionMenu();
 
   static const _actions = [
-    (Icons.info_outline, 'Nutrition Facts'),
-    (Icons.restaurant_menu, 'Open Cooking Mode'),
-    (Icons.sticky_note_2_outlined, 'Add Notes'),
-    (Icons.share_outlined, 'Share'),
-    (Icons.print_outlined, 'Print'),
-    (Icons.feedback_outlined, 'Feedback For The Chef'),
-    (Icons.bookmark_border, 'Add To Collections'),
+    (Icons.info_outline,           'Nutrition Facts',       ''),
+    (Icons.restaurant_menu,        'Open Cooking Mode',     ''),
+    (Icons.sticky_note_2_outlined, 'Add Notes',             '/add-notes'),    // ← route
+    (Icons.share_outlined,         'Share',                 ''),
+    (Icons.print_outlined,         'Print',                 ''),
+    (Icons.feedback_outlined,      'Feedback For The Chef', '/feedback'),     // ← route
+    (Icons.bookmark_border,        'Add To Collections',    ''),
   ];
 
   @override
@@ -531,7 +532,13 @@ class _ActionMenu extends StatelessWidget {
                       color: AppColors.textPrimary,
                     ),
                   ),
-                  onTap: () => Get.back(),
+                  // ListTile onTap:
+                  onTap: () {
+                    Get.back(); // bottom sheet close
+                    if (_actions[i].$3.isNotEmpty) {
+                      Get.toNamed(_actions[i].$3); // route navigate
+                    }
+                  },
                 ),
                 if (i < _actions.length - 1)
                   const Divider(height: 1, color: AppColors.divider),
