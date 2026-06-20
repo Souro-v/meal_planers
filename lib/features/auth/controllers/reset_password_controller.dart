@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import '../../../shared/utils/enums.dart';
 
 class ResetPasswordController extends GetxController {
-
   // ── Forgot Password ──────────────────────────
   final forgotEmailController = TextEditingController();
-  final forgotEmailState      = FieldState.normal.obs;
+  final forgotEmailState = FieldState.normal.obs;
 
   void validateForgotEmail(String v) {
     final ok = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(v);
@@ -15,30 +14,28 @@ class ResetPasswordController extends GetxController {
 
   // ── OTP ──────────────────────────────────────
   final otpControllers = List.generate(4, (_) => TextEditingController());
-  final otpFocusNodes  = List.generate(4, (_) => FocusNode());
+  final otpFocusNodes = List.generate(4, (_) => FocusNode());
 
-  String get otpCode =>
-      otpControllers.map((c) => c.text).join();
+  String get otpCode => otpControllers.map((c) => c.text).join();
 
   bool get isOtpComplete => otpCode.length == 4;
 
   // ── Reset Password ───────────────────────────
-  final newPasswordController     = TextEditingController();
+  final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final newPasswordState          = FieldState.normal.obs;
-  final confirmPasswordState      = FieldState.normal.obs;
+  final newPasswordState = FieldState.normal.obs;
+  final confirmPasswordState = FieldState.normal.obs;
 
-  void validateNewPassword(String v) =>
-      newPasswordState.value = v.length >= 8 ? FieldState.success : FieldState.error;
+  void validateNewPassword(String v) => newPasswordState.value = v.length >= 8
+      ? FieldState.success
+      : FieldState.error;
 
-  void validateConfirmPassword(String v) =>
-      confirmPasswordState.value = v == newPasswordController.text
-          ? FieldState.success
-          : FieldState.error;
+  void validateConfirmPassword(String v) => confirmPasswordState.value =
+      v == newPasswordController.text ? FieldState.success : FieldState.error;
 
   bool get isResetValid =>
       newPasswordState.value == FieldState.success &&
-          confirmPasswordState.value == FieldState.success;
+      confirmPasswordState.value == FieldState.success;
 
   // ── Loading ──────────────────────────────────
   final isLoading = false.obs;

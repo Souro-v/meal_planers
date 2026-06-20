@@ -4,7 +4,7 @@ import '../../../app/themes/app_colors.dart';
 import '../controllers/meal_detail_controller.dart';
 import '../models/meal_model.dart';
 
-// ── Action Menu function ──
+// ── Action Menu function
 void _showActionMenu(BuildContext context) {
   showModalBottomSheet(
     context: context,

@@ -2,10 +2,7 @@ class IngredientModel {
   final String name;
   final String quantity;
 
-  const IngredientModel({
-    required this.name,
-    required this.quantity,
-  });
+  const IngredientModel({required this.name, required this.quantity});
 }
 
 class MealModel {
@@ -31,13 +28,10 @@ class MealModel {
     this.instructions = const [],
   });
 }
+
 class InstructionModel {
   final String step;
   final List<String> items; //step ingredients
 
-  const InstructionModel({
-    required this.step,
-    this.items = const [],
-  });
+  const InstructionModel({required this.step, this.items = const []});
 }
-
