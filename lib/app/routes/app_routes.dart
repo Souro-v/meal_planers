@@ -6,10 +6,12 @@ import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/verify_code_screen.dart';
 import '../../features/home/screens/main_screen.dart';
+import '../../features/meals/screens/add_collection_screen.dart';
 import '../../features/meals/screens/add_notes_screen.dart';
 import '../../features/meals/screens/build_meal_plan_screen.dart';
 import '../../features/meals/screens/feedback_screen.dart';
 import '../../features/meals/screens/meal_detail_screen.dart';
+import '../../features/meals/screens/select_collections_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/onboarding/screens/select_diet_screen.dart';
 import '../../features/onboarding/screens/select_allergies_screen.dart';
@@ -36,6 +38,8 @@ class AppRoutes {
   static const mealDetail = '/meal-detail';
   static const addNotes = '/add-notes';
   static const feedback = '/feedback';
+  static const selectCollections = '/select-collections';
+  static const addCollection     = '/add-collection';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -56,5 +60,7 @@ class AppRoutes {
     GetPage(name: mealDetail, page: () => const MealDetailScreen()),
     GetPage(name: addNotes, page: () => const AddNotesScreen()),
     GetPage(name: feedback, page: () => const FeedbackScreen()),
+    GetPage(name: selectCollections, page: () => const SelectCollectionsScreen()),
+    GetPage(name: addCollection,     page: () => const AddCollectionScreen()),
   ];
 }
