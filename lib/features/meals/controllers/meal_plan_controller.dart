@@ -55,6 +55,11 @@ class MealPlanController extends GetxController {
           items: [],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 520, protein: '24g', carbs: '52g',
+        fat: '22g', fiber: '8g', sugar: '6g', sodium: '890mg',
+      ),
+
     ),
     MealModel(
       id: 'mp2',
@@ -90,6 +95,10 @@ class MealPlanController extends GetxController {
           items: ['¼ cup chopped cilantro', '2 tbsp lime juice'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 480, protein: '18g', carbs: '68g',
+        fat: '14g', fiber: '12g', sugar: '8g', sodium: '720mg',
+      ),
     ),
     MealModel(
       id: 'mp3',
@@ -125,6 +134,10 @@ class MealPlanController extends GetxController {
           items: [],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 560, protein: '22g', carbs: '62g',
+        fat: '24g', fiber: '6g', sugar: '8g', sodium: '680mg',
+      ),
     ),
   ];
 
@@ -174,6 +187,10 @@ class MealPlanController extends GetxController {
           items: ['½ can coconut milk', '½ small bunch cilantro'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 640, protein: '38g', carbs: '58g',
+        fat: '26g', fiber: '4g', sugar: '12g', sodium: '980mg',
+      ),
     ),
     MealModel(
       id: 'rc2',
@@ -216,6 +233,10 @@ class MealPlanController extends GetxController {
           items: ['100g feta cheese'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 320, protein: '12g', carbs: '18g',
+        fat: '22g', fiber: '4g', sugar: '10g', sodium: '840mg',
+      ),
     ),
     MealModel(
       id: 'rc3',
@@ -255,6 +276,11 @@ class MealPlanController extends GetxController {
           items: ['¼ cup fresh basil leaves', '¼ cup grated parmesan cheese'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 520, protein: '16g', carbs: '72g',
+        fat: '18g', fiber: '6g', sugar: '14g', sodium: '560mg',
+      ),
+
     ),
   ];
 
@@ -295,6 +321,10 @@ class MealPlanController extends GetxController {
           items: ['½ tsp red chili flakes'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 480, protein: '22g', carbs: '38g',
+        fat: '28g', fiber: '10g', sugar: '4g', sodium: '620mg',
+      ),
     ),
     MealModel(
       id: 'rp2',
@@ -335,6 +365,11 @@ class MealPlanController extends GetxController {
           items: ['1 tbsp sesame seeds'],
         ),
       ],
+      nutrition: NutritionModel(
+        calories: 580, protein: '48g', carbs: '48g',
+        fat: '18g', fiber: '6g', sugar: '16g', sodium: '1020mg',
+      ),
+
     ),
     MealModel(
       id: 'rp3',
@@ -375,6 +410,10 @@ class MealPlanController extends GetxController {
           items: ['2 tbsp soy sauce', '1 inch piece ginger root'],
         ),
       ],
+      nutrition: const NutritionModel(
+        calories: 420, protein: '20g', carbs: '52g',
+        fat: '16g', fiber: '8g', sugar: '12g', sodium: '780mg',
+      ),
     ),
   ];
 }

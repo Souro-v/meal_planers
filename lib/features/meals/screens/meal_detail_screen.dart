@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/meal_detail_controller.dart';
 import '../models/meal_model.dart';
+import '../widgets/nutrition_bottom_sheet.dart';
 
 // ── Action Menu function
-void _showActionMenu(BuildContext context) {
+void _showActionMenu(BuildContext context, MealModel meal) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
-    builder: (_) => const _ActionMenu(),
+    builder: (_) => _ActionMenu(meal: meal),
   );
 }
 
@@ -164,7 +169,7 @@ class _HeroImage extends StatelessWidget {
                 _CircleButton(icon: Icons.arrow_back, onTap: () => Get.back()),
                 _CircleButton(
                   icon: Icons.more_horiz,
-                  onTap: () => _showActionMenu(context),
+                  onTap: () => _showActionMenu(context, meal),
                 ),
               ],
             ),
@@ -475,20 +480,130 @@ class _BottomBar extends StatelessWidget {
 }
 
 class _ActionMenu extends StatelessWidget {
-  const _ActionMenu();
+  final MealModel meal;
 
-  static const _actions = [
-    (Icons.info_outline, 'Nutrition Facts', ''),
-    (Icons.restaurant_menu, 'Open Cooking Mode', ''),
-    (Icons.sticky_note_2_outlined, 'Add Notes', '/add-notes'), // ← route
-    (Icons.share_outlined, 'Share', ''),
-    (Icons.print_outlined, 'Print', ''),
-    (Icons.feedback_outlined, 'Feedback For The Chef', '/feedback'), // ← route
-    (Icons.bookmark_border, 'Add To Collections', '/select-collections'),
-  ];
+  const _ActionMenu({required this.meal});
+
+  // ── Share ──────────────────────────────────
+  void _share() {
+    Get.back();
+    final ingredients = meal.ingredients
+        .map((i) => '• ${i.name}: ${i.quantity}')
+        .join('\n');
+
+    Share.share(
+      '🍽️ ${meal.name}\n\n'
+      '⏱️ ${meal.duration} • ${meal.servings} servings\n\n'
+      '📝 Ingredients:\n$ingredients\n\n'
+      'Shared from Mealtime App',
+    );
+  }
+
+  // ── Print ──────────────────────────────────
+  Future<void> _print() async {
+    Get.back();
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        margin: const pw.EdgeInsets.all(32),
+        build: (_) => pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Text(
+              meal.name,
+              style: pw.TextStyle(fontSize: 22, fontWeight: pw.FontWeight.bold),
+            ),
+            pw.SizedBox(height: 6),
+            pw.Text(
+              '${meal.duration}  •  ${meal.servings} servings',
+              style: const pw.TextStyle(fontSize: 13),
+            ),
+            pw.SizedBox(height: 20),
+
+            // Ingredients
+            pw.Text(
+              'Ingredients',
+              style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+            ),
+            pw.SizedBox(height: 8),
+            ...meal.ingredients.map(
+              (i) => pw.Text(
+                '• ${i.name}  —  ${i.quantity}',
+                style: const pw.TextStyle(fontSize: 13),
+              ),
+            ),
+            pw.SizedBox(height: 20),
+
+            // Instructions
+            pw.Text(
+              'Instructions',
+              style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+            ),
+            pw.SizedBox(height: 8),
+            ...meal.instructions.asMap().entries.map(
+              (e) => pw.Padding(
+                padding: const pw.EdgeInsets.only(bottom: 8),
+                child: pw.Text(
+                  '${e.key + 1}. ${e.value.step}',
+                  style: const pw.TextStyle(fontSize: 13),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    await Printing.layoutPdf(onLayout: (format) async => pdf.save());
+  }
+
+  // ── Nutrition Facts ────────────────────────
+  void _showNutrition(BuildContext context) {
+    Get.back();
+    Future.delayed(const Duration(milliseconds: 300), () {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        builder: (_) => NutritionBottomSheet(meal: meal),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final actions = [
+      (Icons.info_outline, 'Nutrition Facts', () => _showNutrition(context)),
+      (
+        Icons.sticky_note_2_outlined,
+        'Add Notes',
+        () {
+          Get.back();
+          Get.toNamed(AppRoutes.addNotes);
+        },
+      ),
+      (Icons.share_outlined, 'Share', _share),
+      (Icons.print_outlined, 'Print', _print),
+      (
+        Icons.feedback_outlined,
+        'Feedback For The Chef',
+        () {
+          Get.back();
+          Get.toNamed(AppRoutes.feedback);
+        },
+      ),
+      (
+        Icons.bookmark_border,
+        'Add To Collections',
+        () {
+          Get.back();
+          Get.toNamed(AppRoutes.selectCollections);
+        },
+      ),
+    ];
+
     return Container(
       padding: const EdgeInsets.fromLTRB(24, 20, 24, 36),
       decoration: const BoxDecoration(
@@ -498,7 +613,6 @@ class _ActionMenu extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // ── Close ──
           Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
@@ -511,36 +625,28 @@ class _ActionMenu extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-
-          // ── Action Items ──
           ...List.generate(
-            _actions.length,
+            actions.length,
             (i) => Column(
               children: [
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: Icon(
-                    _actions[i].$1,
+                    actions[i].$1,
                     color: AppColors.textPrimary,
                     size: 22,
                   ),
                   title: Text(
-                    _actions[i].$2,
+                    actions[i].$2,
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: AppColors.textPrimary,
                     ),
                   ),
-                  // ListTile onTap:
-                  onTap: () {
-                    Get.back(); // bottom sheet close
-                    if (_actions[i].$3.isNotEmpty) {
-                      Get.toNamed(_actions[i].$3); // route navigate
-                    }
-                  },
+                  onTap: actions[i].$3,
                 ),
-                if (i < _actions.length - 1)
+                if (i < actions.length - 1)
                   const Divider(height: 1, color: AppColors.divider),
               ],
             ),
