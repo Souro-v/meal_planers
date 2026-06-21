@@ -478,13 +478,13 @@ class _ActionMenu extends StatelessWidget {
   const _ActionMenu();
 
   static const _actions = [
-    (Icons.info_outline,           'Nutrition Facts',       ''),
-    (Icons.restaurant_menu,        'Open Cooking Mode',     ''),
-    (Icons.sticky_note_2_outlined, 'Add Notes',             '/add-notes'),    // ← route
-    (Icons.share_outlined,         'Share',                 ''),
-    (Icons.print_outlined,         'Print',                 ''),
-    (Icons.feedback_outlined,      'Feedback For The Chef', '/feedback'),     // ← route
-    (Icons.bookmark_border,        'Add To Collections',    ''),
+    (Icons.info_outline, 'Nutrition Facts', ''),
+    (Icons.restaurant_menu, 'Open Cooking Mode', ''),
+    (Icons.sticky_note_2_outlined, 'Add Notes', '/add-notes'), // ← route
+    (Icons.share_outlined, 'Share', ''),
+    (Icons.print_outlined, 'Print', ''),
+    (Icons.feedback_outlined, 'Feedback For The Chef', '/feedback'), // ← route
+    (Icons.bookmark_border, 'Add To Collections', '/select-collections'),
   ];
 
   @override
