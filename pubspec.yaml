@@ -41,7 +41,9 @@ dependencies:
   flutter_svg: ^2.0.9   # SVG icons
   google_fonts: ^6.1.0  # Custom fonts
   font_awesome_flutter: ^10.7.0
-
+  share_plus: ^10.0.0       # Share
+  pdf: ^3.10.8              # PDF
+  printing: ^5.13.0         # Print
 dev_dependencies:
   flutter_test:
     sdk: flutter
