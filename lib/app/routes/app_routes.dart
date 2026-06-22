@@ -9,6 +9,7 @@ import '../../features/home/screens/main_screen.dart';
 import '../../features/meals/screens/add_collection_screen.dart';
 import '../../features/meals/screens/add_notes_screen.dart';
 import '../../features/meals/screens/build_meal_plan_screen.dart';
+import '../../features/meals/screens/cooking_mode_screen.dart';
 import '../../features/meals/screens/feedback_screen.dart';
 import '../../features/meals/screens/meal_detail_screen.dart';
 import '../../features/meals/screens/select_collections_screen.dart';
@@ -40,6 +41,7 @@ class AppRoutes {
   static const feedback = '/feedback';
   static const selectCollections = '/select-collections';
   static const addCollection     = '/add-collection';
+  static const cookingMode = '/cooking-mode';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -62,5 +64,6 @@ class AppRoutes {
     GetPage(name: feedback, page: () => const FeedbackScreen()),
     GetPage(name: selectCollections, page: () => const SelectCollectionsScreen()),
     GetPage(name: addCollection,     page: () => const AddCollectionScreen()),
+    GetPage(name: cookingMode, page: () => const CookingModeScreen()),
   ];
 }

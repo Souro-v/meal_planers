@@ -8,6 +8,7 @@ import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/meal_detail_controller.dart';
 import '../models/meal_model.dart';
+import '../widgets/cooking_guide_popover.dart';
 import '../widgets/nutrition_bottom_sheet.dart';
 
 // ── Action Menu function
@@ -113,7 +114,7 @@ class MealDetailScreen extends StatelessWidget {
       ),
 
       // ── Bottom Bar ──
-      bottomNavigationBar: _BottomBar(),
+      bottomNavigationBar: _BottomBar(meal: meal),
     );
   }
 }
@@ -133,7 +134,7 @@ class _HeroImage extends StatelessWidget {
           width: double.infinity,
           height: 280,
           fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => Container(
+          errorBuilder: (context, error, stackTrace) => Container(
             width: double.infinity,
             height: 280,
             color: AppColors.backgroundGrey,
@@ -410,7 +411,9 @@ class _InstructionsTab extends StatelessWidget {
 
 // ── Bottom Bar ───────────────────────────────────────────
 class _BottomBar extends StatelessWidget {
-  const _BottomBar();
+  final MealModel meal;
+
+  const _BottomBar({required this.meal});
 
   @override
   Widget build(BuildContext context) {
@@ -454,7 +457,14 @@ class _BottomBar extends StatelessWidget {
           Expanded(
             flex: 2,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                  builder: (_) => CookingGuidePopover(meal: meal),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 elevation: 0,
@@ -563,6 +573,7 @@ class _ActionMenu extends StatelessWidget {
   void _showNutrition(BuildContext context) {
     Get.back();
     Future.delayed(const Duration(milliseconds: 300), () {
+      if (!context.mounted) return;
       showModalBottomSheet(
         context: context,
         backgroundColor: Colors.transparent,
