@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/cooking_controller.dart';
 import '../models/meal_model.dart';
+import '../widgets/grocery_guide_popover.dart';
 
 class CookingModeScreen extends StatelessWidget {
   const CookingModeScreen({super.key});
@@ -164,7 +165,14 @@ class CookingModeScreen extends StatelessWidget {
                             height: 52,
                             child: ElevatedButton(
                               onPressed: c.isLastStep
-                                  ? () => Get.back()
+                                  ? () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true,
+                                  builder: (_) => const GroceryGuidePopover(),
+                                ).then((_) => Get.back()); //
+                              }
                                   : c.nextStep,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primary,
@@ -462,8 +470,8 @@ class _ConfirmQuitSheet extends StatelessWidget {
                   width: double.infinity, height: 52,
                   child: OutlinedButton(
                     onPressed: () {
-                      Get.back(); // sheet বন্ধ
-                      Get.back(); // cooking mode বন্ধ
+                      Get.back(); // sheet
+                      Get.back(); // cooking mode
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: AppColors.border),
