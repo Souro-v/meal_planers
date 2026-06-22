@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meal_planers/features/grocerises/screens/groceries_screen.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/main_controller.dart';
 import 'meal_plan_screen.dart';
@@ -10,7 +11,7 @@ class MainScreen extends StatelessWidget {
   // ── Screens per tab ──
   static const _screens = [
     MealPlanScreen(),
-    Center(child: Text('Groceries')),   // to be replace
+    GroceriesScreen(), // to be replace
     Center(child: Text('Favourites')),  // to be replace
     Center(child: Text('Settings')),    // to be replace
   ];
