@@ -21,13 +21,20 @@ class NutritionModel {
 class IngredientModel {
   final String name;
   final String quantity;
+
   const IngredientModel({required this.name, required this.quantity});
 }
 
 class InstructionModel {
   final String step;
   final List<String> items;
-  const InstructionModel({required this.step, this.items = const []});
+  final List<int> timers;
+
+  const InstructionModel({
+    required this.step,
+    this.items = const [],
+    this.timers = const [],
+  });
 }
 
 class MealModel {

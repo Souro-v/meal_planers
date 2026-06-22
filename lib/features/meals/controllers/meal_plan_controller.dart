@@ -169,14 +169,17 @@ class MealPlanController extends GetxController {
         InstructionModel(
           step: 'Using a strainer or colander, rinse the rice under cold running water, then drain and transfer to a small saucepan. Add broth and bring the mixture to a boil over high heat.',
           items: ['½ cup basmati rice', '8 fl oz (1 cup) chicken or vegetable broth'],
+
         ),
         InstructionModel(
           step: 'Meanwhile, wash and dry the fresh produce.',
           items: ['1 (1 inch) piece ginger root', '1 jalapeño pepper', '½ small bunch cilantro', '½ pint grape tomatoes'],
+
         ),
         InstructionModel(
           step: 'Once the liquid comes to a boil, stir the mixture, cover the saucepan, and reduce heat to low. Cook rice until liquid is fully absorbed, 15–18 minutes. Once done, remove from heat and let it stand.',
           items: [],
+          timers: [15, 5],
         ),
         InstructionModel(
           step: 'Sauté diced onion, garlic, and ginger in butter until golden. Add tomatoes, jalapeño, and garam masala. Cook for 5 minutes then blend smooth.',
@@ -185,6 +188,7 @@ class MealPlanController extends GetxController {
         InstructionModel(
           step: 'Return blended sauce to pan. Stir in coconut milk and simmer for 10 minutes. Serve over rice and garnish with fresh cilantro.',
           items: ['½ can coconut milk', '½ small bunch cilantro'],
+          timers: [10],
         ),
       ],
       nutrition: NutritionModel(
@@ -266,6 +270,7 @@ class MealPlanController extends GetxController {
         InstructionModel(
           step: 'Pour in crushed tomatoes and simmer for 10 minutes. Season with salt to taste.',
           items: ['1 can crushed tomatoes'],
+          timers: [10],
         ),
         InstructionModel(
           step: 'Drain pasta, reserving ¼ cup pasta water. Add pasta to sauce and toss. Add pasta water as needed.',
@@ -355,10 +360,12 @@ class MealPlanController extends GetxController {
         InstructionModel(
           step: 'Steam broccoli florets for 5–6 minutes until tender-crisp. Season lightly with salt.',
           items: ['2 cups broccoli florets'],
+          timers: [6],
         ),
         InstructionModel(
           step: 'Sear salmon in a hot skillet for 3–4 minutes per side. Brush teriyaki sauce in the last 2 minutes.',
           items: ['2 salmon fillets (6 oz each)'],
+          timers: [8],
         ),
         InstructionModel(
           step: 'Serve salmon over rice with steamed broccoli. Sprinkle sesame seeds on top.',
@@ -392,6 +399,7 @@ class MealPlanController extends GetxController {
         InstructionModel(
           step: 'Cook brown rice according to package directions, about 25 minutes. Keep warm.',
           items: ['1 cup brown rice'],
+          timers: [30],
         ),
         InstructionModel(
           step: 'Press tofu dry with paper towels and cut into 1-inch cubes. Pan-fry in sesame oil until golden on all sides.',
