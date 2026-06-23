@@ -7,12 +7,14 @@ class MealSection extends StatelessWidget {
   final String title;
   final List<MealModel> meals;
   final VoidCallback? onSeeAll;
+  final String? targetDay;
 
   const MealSection({
     super.key,
     required this.title,
     required this.meals,
     this.onSeeAll,
+    this.targetDay,
   });
 
   @override

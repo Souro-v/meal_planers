@@ -5,9 +5,7 @@ class MealPlanController extends GetxController {
   final addedMealIds = <String>[].obs;
 
   void toggleMeal(String id) {
-    addedMealIds.contains(id)
-        ? addedMealIds.remove(id)
-        : addedMealIds.add(id);
+    addedMealIds.contains(id) ? addedMealIds.remove(id) : addedMealIds.add(id);
   }
 
   bool isAdded(String id) => addedMealIds.contains(id);
@@ -35,31 +33,48 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Preheat oven to 400°F. Trim and halve brussels sprouts, toss with olive oil, salt, and pepper.',
-          items: ['1 lb brussels sprouts', '2 tbsp olive oil', 'salt & pepper to taste'],
+          step:
+              'Preheat oven to 400°F. Trim and halve brussels sprouts, toss with olive oil, salt, and pepper.',
+          items: [
+            '1 lb brussels sprouts',
+            '2 tbsp olive oil',
+            'salt & pepper to taste',
+          ],
         ),
         InstructionModel(
-          step: 'Spread brussels sprouts on a baking sheet and roast for 20–25 minutes until golden and crispy.',
+          step:
+              'Spread brussels sprouts on a baking sheet and roast for 20–25 minutes until golden and crispy.',
           items: [],
         ),
         InstructionModel(
-          step: 'Meanwhile, boil potatoes until tender. Drain and mash with butter, salt, and pepper.',
-          items: ['2 large potatoes', '2 tbsp butter', 'salt & pepper to taste'],
+          step:
+              'Meanwhile, boil potatoes until tender. Drain and mash with butter, salt, and pepper.',
+          items: [
+            '2 large potatoes',
+            '2 tbsp butter',
+            'salt & pepper to taste',
+          ],
         ),
         InstructionModel(
-          step: 'Slice sausage and pan-fry in a skillet over medium heat until browned on both sides.',
+          step:
+              'Slice sausage and pan-fry in a skillet over medium heat until browned on both sides.',
           items: ['2 sausage links'],
         ),
         InstructionModel(
-          step: 'Assemble bowls with mashed potato base, roasted sprouts, and sausage slices on top.',
+          step:
+              'Assemble bowls with mashed potato base, roasted sprouts, and sausage slices on top.',
           items: [],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 520, protein: '24g', carbs: '52g',
-        fat: '22g', fiber: '8g', sugar: '6g', sodium: '890mg',
+        calories: 520,
+        protein: '24g',
+        carbs: '52g',
+        fat: '22g',
+        fiber: '8g',
+        sugar: '6g',
+        sodium: '890mg',
       ),
-
     ),
     MealModel(
       id: 'mp2',
@@ -79,25 +94,38 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Preheat oven to 425°F. Toss cauliflower with olive oil, cumin, and salt. Roast for 25 minutes.',
-          items: ['3 cups cauliflower florets', '2 tbsp olive oil', '1 tsp cumin'],
+          step:
+              'Preheat oven to 425°F. Toss cauliflower with olive oil, cumin, and salt. Roast for 25 minutes.',
+          items: [
+            '3 cups cauliflower florets',
+            '2 tbsp olive oil',
+            '1 tsp cumin',
+          ],
         ),
         InstructionModel(
-          step: 'Cook basmati rice according to package instructions. Fluff with a fork when done.',
+          step:
+              'Cook basmati rice according to package instructions. Fluff with a fork when done.',
           items: ['1 cup basmati rice'],
         ),
         InstructionModel(
-          step: 'Drain and rinse black beans. Warm in a saucepan over low heat with a pinch of cumin.',
+          step:
+              'Drain and rinse black beans. Warm in a saucepan over low heat with a pinch of cumin.',
           items: ['1 can black beans'],
         ),
         InstructionModel(
-          step: 'Assemble bowls with rice base, roasted cauliflower, and black beans. Top with cilantro and lime juice.',
+          step:
+              'Assemble bowls with rice base, roasted cauliflower, and black beans. Top with cilantro and lime juice.',
           items: ['¼ cup chopped cilantro', '2 tbsp lime juice'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 480, protein: '18g', carbs: '68g',
-        fat: '14g', fiber: '12g', sugar: '8g', sodium: '720mg',
+        calories: 480,
+        protein: '18g',
+        carbs: '68g',
+        fat: '14g',
+        fiber: '12g',
+        sugar: '8g',
+        sodium: '720mg',
       ),
     ),
     MealModel(
@@ -118,25 +146,39 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Cook pasta according to package directions. Reserve ½ cup pasta water before draining.',
+          step:
+              'Cook pasta according to package directions. Reserve ½ cup pasta water before draining.',
           items: ['200g pasta'],
         ),
         InstructionModel(
-          step: 'Blend soaked cashews with garlic, nutritional yeast, and vegetable broth until completely smooth.',
-          items: ['½ cup soaked cashews', '2 cloves garlic', '2 tbsp nutritional yeast', '½ cup vegetable broth'],
+          step:
+              'Blend soaked cashews with garlic, nutritional yeast, and vegetable broth until completely smooth.',
+          items: [
+            '½ cup soaked cashews',
+            '2 cloves garlic',
+            '2 tbsp nutritional yeast',
+            '½ cup vegetable broth',
+          ],
         ),
         InstructionModel(
-          step: 'Slice zucchini and vegan sausage. Sauté in skillet over medium-high heat for 5–7 minutes until golden.',
+          step:
+              'Slice zucchini and vegan sausage. Sauté in skillet over medium-high heat for 5–7 minutes until golden.',
           items: ['2 medium zucchini', '2 vegan sausage links'],
         ),
         InstructionModel(
-          step: 'Add cashew cream to skillet, stir in pasta and reserved pasta water. Toss until well coated and serve immediately.',
+          step:
+              'Add cashew cream to skillet, stir in pasta and reserved pasta water. Toss until well coated and serve immediately.',
           items: [],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 560, protein: '22g', carbs: '62g',
-        fat: '24g', fiber: '6g', sugar: '8g', sodium: '680mg',
+        calories: 560,
+        protein: '22g',
+        carbs: '62g',
+        fat: '24g',
+        fiber: '6g',
+        sugar: '8g',
+        sodium: '680mg',
       ),
     ),
   ];
@@ -154,7 +196,10 @@ class MealPlanController extends GetxController {
       cookware: ['Large skillet', 'Medium saucepan', 'Blender', 'Can opener'],
       ingredients: [
         IngredientModel(name: 'basmati rice', quantity: '½ cup'),
-        IngredientModel(name: 'chicken or vegetable broth', quantity: '16 fl oz'),
+        IngredientModel(
+          name: 'chicken or vegetable broth',
+          quantity: '16 fl oz',
+        ),
         IngredientModel(name: 'cilantro', quantity: '½ small bunch'),
         IngredientModel(name: 'coconut milk', quantity: '½ (13.5 fl oz) can'),
         IngredientModel(name: 'garlic', quantity: '1 (1 inch) piece'),
@@ -167,33 +212,53 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Using a strainer or colander, rinse the rice under cold running water, then drain and transfer to a small saucepan. Add broth and bring the mixture to a boil over high heat.',
-          items: ['½ cup basmati rice', '8 fl oz (1 cup) chicken or vegetable broth'],
-
+          step:
+              'Using a strainer or colander, rinse the rice under cold running water, then drain and transfer to a small saucepan. Add broth and bring the mixture to a boil over high heat.',
+          items: [
+            '½ cup basmati rice',
+            '8 fl oz (1 cup) chicken or vegetable broth',
+          ],
         ),
         InstructionModel(
           step: 'Meanwhile, wash and dry the fresh produce.',
-          items: ['1 (1 inch) piece ginger root', '1 jalapeño pepper', '½ small bunch cilantro', '½ pint grape tomatoes'],
-
+          items: [
+            '1 (1 inch) piece ginger root',
+            '1 jalapeño pepper',
+            '½ small bunch cilantro',
+            '½ pint grape tomatoes',
+          ],
         ),
         InstructionModel(
-          step: 'Once the liquid comes to a boil, stir the mixture, cover the saucepan, and reduce heat to low. Cook rice until liquid is fully absorbed, 15–18 minutes. Once done, remove from heat and let it stand.',
+          step:
+              'Once the liquid comes to a boil, stir the mixture, cover the saucepan, and reduce heat to low. Cook rice until liquid is fully absorbed, 15–18 minutes. Once done, remove from heat and let it stand.',
           items: [],
           timers: [15, 5],
         ),
         InstructionModel(
-          step: 'Sauté diced onion, garlic, and ginger in butter until golden. Add tomatoes, jalapeño, and garam masala. Cook for 5 minutes then blend smooth.',
-          items: ['1 medium yellow onion', '1 inch garlic', '2 tbsp butter', '2 tsp garam masala'],
+          step:
+              'Sauté diced onion, garlic, and ginger in butter until golden. Add tomatoes, jalapeño, and garam masala. Cook for 5 minutes then blend smooth.',
+          items: [
+            '1 medium yellow onion',
+            '1 inch garlic',
+            '2 tbsp butter',
+            '2 tsp garam masala',
+          ],
         ),
         InstructionModel(
-          step: 'Return blended sauce to pan. Stir in coconut milk and simmer for 10 minutes. Serve over rice and garnish with fresh cilantro.',
+          step:
+              'Return blended sauce to pan. Stir in coconut milk and simmer for 10 minutes. Serve over rice and garnish with fresh cilantro.',
           items: ['½ can coconut milk', '½ small bunch cilantro'],
           timers: [10],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 640, protein: '38g', carbs: '58g',
-        fat: '26g', fiber: '4g', sugar: '12g', sodium: '980mg',
+        calories: 640,
+        protein: '38g',
+        carbs: '58g',
+        fat: '26g',
+        fiber: '4g',
+        sugar: '12g',
+        sodium: '980mg',
       ),
     ),
     MealModel(
@@ -217,20 +282,31 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Wash and chop romaine lettuce into bite-sized pieces. Place in a large salad bowl.',
+          step:
+              'Wash and chop romaine lettuce into bite-sized pieces. Place in a large salad bowl.',
           items: ['1 head romaine lettuce'],
         ),
         InstructionModel(
-          step: 'Dice cucumber, halve cherry tomatoes, and thinly slice red onion. Add all to the bowl.',
-          items: ['1 large cucumber', '1 cup cherry tomatoes', '¼ medium red onion'],
+          step:
+              'Dice cucumber, halve cherry tomatoes, and thinly slice red onion. Add all to the bowl.',
+          items: [
+            '1 large cucumber',
+            '1 cup cherry tomatoes',
+            '¼ medium red onion',
+          ],
         ),
         InstructionModel(
           step: 'Add kalamata olives to the bowl.',
           items: ['½ cup kalamata olives'],
         ),
         InstructionModel(
-          step: 'Whisk together olive oil, lemon juice, and oregano to make the dressing. Pour over salad and toss gently.',
-          items: ['3 tbsp olive oil', '2 tbsp lemon juice', '1 tsp dried oregano'],
+          step:
+              'Whisk together olive oil, lemon juice, and oregano to make the dressing. Pour over salad and toss gently.',
+          items: [
+            '3 tbsp olive oil',
+            '2 tbsp lemon juice',
+            '1 tsp dried oregano',
+          ],
         ),
         InstructionModel(
           step: 'Crumble feta cheese generously on top and serve immediately.',
@@ -238,8 +314,13 @@ class MealPlanController extends GetxController {
         ),
       ],
       nutrition: NutritionModel(
-        calories: 320, protein: '12g', carbs: '18g',
-        fat: '22g', fiber: '4g', sugar: '10g', sodium: '840mg',
+        calories: 320,
+        protein: '12g',
+        carbs: '18g',
+        fat: '22g',
+        fiber: '4g',
+        sugar: '10g',
+        sodium: '840mg',
       ),
     ),
     MealModel(
@@ -260,32 +341,45 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Boil a large pot of salted water. Cook spaghetti until al dente per package instructions.',
+          step:
+              'Boil a large pot of salted water. Cook spaghetti until al dente per package instructions.',
           items: ['200g spaghetti'],
         ),
         InstructionModel(
-          step: 'In a skillet, sauté sliced garlic in olive oil over medium heat until golden. Add red pepper flakes.',
-          items: ['3 cloves garlic', '3 tbsp olive oil', '½ tsp red pepper flakes'],
+          step:
+              'In a skillet, sauté sliced garlic in olive oil over medium heat until golden. Add red pepper flakes.',
+          items: [
+            '3 cloves garlic',
+            '3 tbsp olive oil',
+            '½ tsp red pepper flakes',
+          ],
         ),
         InstructionModel(
-          step: 'Pour in crushed tomatoes and simmer for 10 minutes. Season with salt to taste.',
+          step:
+              'Pour in crushed tomatoes and simmer for 10 minutes. Season with salt to taste.',
           items: ['1 can crushed tomatoes'],
           timers: [10],
         ),
         InstructionModel(
-          step: 'Drain pasta, reserving ¼ cup pasta water. Add pasta to sauce and toss. Add pasta water as needed.',
+          step:
+              'Drain pasta, reserving ¼ cup pasta water. Add pasta to sauce and toss. Add pasta water as needed.',
           items: [],
         ),
         InstructionModel(
-          step: 'Stir in fresh basil. Plate and top with grated parmesan cheese.',
+          step:
+              'Stir in fresh basil. Plate and top with grated parmesan cheese.',
           items: ['¼ cup fresh basil leaves', '¼ cup grated parmesan cheese'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 520, protein: '16g', carbs: '72g',
-        fat: '18g', fiber: '6g', sugar: '14g', sodium: '560mg',
+        calories: 520,
+        protein: '16g',
+        carbs: '72g',
+        fat: '18g',
+        fiber: '6g',
+        sugar: '14g',
+        sodium: '560mg',
       ),
-
     ),
   ];
 
@@ -310,25 +404,38 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Toast sourdough bread slices until golden and crispy on both sides.',
+          step:
+              'Toast sourdough bread slices until golden and crispy on both sides.',
           items: ['4 slices sourdough bread'],
         ),
         InstructionModel(
-          step: 'Mash avocados with lemon juice, salt, and pepper until smooth but slightly chunky.',
-          items: ['2 ripe avocados', '1 tbsp lemon juice', 'salt & pepper to taste'],
+          step:
+              'Mash avocados with lemon juice, salt, and pepper until smooth but slightly chunky.',
+          items: [
+            '2 ripe avocados',
+            '1 tbsp lemon juice',
+            'salt & pepper to taste',
+          ],
         ),
         InstructionModel(
-          step: 'Bring a saucepan of water to a gentle simmer. Poach eggs for 3–4 minutes until whites are set.',
+          step:
+              'Bring a saucepan of water to a gentle simmer. Poach eggs for 3–4 minutes until whites are set.',
           items: ['4 large eggs'],
         ),
         InstructionModel(
-          step: 'Spread avocado mash generously on toast. Top each with a poached egg and sprinkle chili flakes.',
+          step:
+              'Spread avocado mash generously on toast. Top each with a poached egg and sprinkle chili flakes.',
           items: ['½ tsp red chili flakes'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 480, protein: '22g', carbs: '38g',
-        fat: '28g', fiber: '10g', sugar: '4g', sodium: '620mg',
+        calories: 480,
+        protein: '22g',
+        carbs: '38g',
+        fat: '28g',
+        fiber: '10g',
+        sugar: '4g',
+        sodium: '620mg',
       ),
     ),
     MealModel(
@@ -350,33 +457,47 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Cook jasmine rice according to package instructions. Keep warm until ready to serve.',
+          step:
+              'Cook jasmine rice according to package instructions. Keep warm until ready to serve.',
           items: ['1 cup jasmine rice'],
         ),
         InstructionModel(
-          step: 'Mix soy sauce, honey, sesame oil, and minced garlic together to make teriyaki sauce.',
-          items: ['3 tbsp soy sauce', '2 tbsp honey', '1 tsp sesame oil', '2 cloves garlic'],
+          step:
+              'Mix soy sauce, honey, sesame oil, and minced garlic together to make teriyaki sauce.',
+          items: [
+            '3 tbsp soy sauce',
+            '2 tbsp honey',
+            '1 tsp sesame oil',
+            '2 cloves garlic',
+          ],
         ),
         InstructionModel(
-          step: 'Steam broccoli florets for 5–6 minutes until tender-crisp. Season lightly with salt.',
+          step:
+              'Steam broccoli florets for 5–6 minutes until tender-crisp. Season lightly with salt.',
           items: ['2 cups broccoli florets'],
           timers: [6],
         ),
         InstructionModel(
-          step: 'Sear salmon in a hot skillet for 3–4 minutes per side. Brush teriyaki sauce in the last 2 minutes.',
+          step:
+              'Sear salmon in a hot skillet for 3–4 minutes per side. Brush teriyaki sauce in the last 2 minutes.',
           items: ['2 salmon fillets (6 oz each)'],
           timers: [8],
         ),
         InstructionModel(
-          step: 'Serve salmon over rice with steamed broccoli. Sprinkle sesame seeds on top.',
+          step:
+              'Serve salmon over rice with steamed broccoli. Sprinkle sesame seeds on top.',
           items: ['1 tbsp sesame seeds'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 580, protein: '48g', carbs: '48g',
-        fat: '18g', fiber: '6g', sugar: '16g', sodium: '1020mg',
+        calories: 580,
+        protein: '48g',
+        carbs: '48g',
+        fat: '18g',
+        fiber: '6g',
+        sugar: '16g',
+        sodium: '1020mg',
       ),
-
     ),
     MealModel(
       id: 'rp3',
@@ -397,12 +518,14 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Cook brown rice according to package directions, about 25 minutes. Keep warm.',
+          step:
+              'Cook brown rice according to package directions, about 25 minutes. Keep warm.',
           items: ['1 cup brown rice'],
           timers: [30],
         ),
         InstructionModel(
-          step: 'Press tofu dry with paper towels and cut into 1-inch cubes. Pan-fry in sesame oil until golden on all sides.',
+          step:
+              'Press tofu dry with paper towels and cut into 1-inch cubes. Pan-fry in sesame oil until golden on all sides.',
           items: ['200g firm tofu', '1 tbsp sesame oil'],
         ),
         InstructionModel(
@@ -410,18 +533,104 @@ class MealPlanController extends GetxController {
           items: ['2 mixed bell peppers', '2 medium carrots'],
         ),
         InstructionModel(
-          step: 'Stir-fry vegetables and snap peas in the same wok on high heat for 5–6 minutes until slightly charred.',
+          step:
+              'Stir-fry vegetables and snap peas in the same wok on high heat for 5–6 minutes until slightly charred.',
           items: ['1 cup snap peas'],
         ),
         InstructionModel(
-          step: 'Add tofu back in. Pour soy sauce and grated ginger over everything. Toss well and serve over brown rice.',
+          step:
+              'Add tofu back in. Pour soy sauce and grated ginger over everything. Toss well and serve over brown rice.',
           items: ['2 tbsp soy sauce', '1 inch piece ginger root'],
         ),
       ],
-      nutrition: const NutritionModel(
-        calories: 420, protein: '20g', carbs: '52g',
-        fat: '16g', fiber: '8g', sugar: '12g', sodium: '780mg',
+      nutrition:  NutritionModel(
+        calories: 420,
+        protein: '20g',
+        carbs: '52g',
+        fat: '16g',
+        fiber: '8g',
+        sugar: '12g',
+        sodium: '780mg',
       ),
     ),
   ];
+
+  // ── Weekly Plan ───────────────────────────
+  static const _days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
+  final weeklyPlan = <String, List<MealModel>>{
+    'Monday': [],
+    'Tuesday': [],
+    'Wednesday': [],
+    'Thursday': [],
+    'Friday': [],
+    'Saturday': [],
+    'Sunday': [],
+  }.obs;
+
+  // ── Week navigation ───────────────────────
+  final weekOffset = 0.obs; // 0 = this week, -1 = last week, +1 = next week
+
+  DateTime get weekStart {
+    final now = DateTime.now();
+    final monday = now.subtract(Duration(days: now.weekday - 1));
+    return monday.add(Duration(days: weekOffset.value * 7));
+  }
+
+  DateTime weekDay(int index) => weekStart.add(Duration(days: index));
+
+  String get weekRangeLabel {
+    final start = weekStart;
+    final end = weekStart.add(const Duration(days: 6));
+    return '${_fmt(start)} — ${_fmt(end)}';
+  }
+
+  String _fmt(DateTime d) => '${_month(d.month)} ${d.day}';
+
+  String _month(int m) => const [
+    '',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ][m];
+
+  void prevWeek() => weekOffset.value--;
+
+  void nextWeek() => weekOffset.value++;
+
+  // ── Add / Remove meals ────────────────────
+  void addMealToDay(String day, MealModel meal) {
+    final updated = List<MealModel>.from(weeklyPlan[day] ?? []);
+    if (!updated.any((m) => m.id == meal.id)) {
+      updated.add(meal);
+    }
+    weeklyPlan[day] = updated;
+    weeklyPlan.refresh();
+  }
+
+  void removeMealFromDay(String day, String mealId) {
+    final updated = List<MealModel>.from(weeklyPlan[day] ?? [])
+      ..removeWhere((m) => m.id == mealId);
+    weeklyPlan[day] = updated;
+    weeklyPlan.refresh();
+  }
+
+  bool get hasAnyMeals => weeklyPlan.values.any((meals) => meals.isNotEmpty);
 }

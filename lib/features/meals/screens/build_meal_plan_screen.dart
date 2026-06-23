@@ -9,7 +9,8 @@ class BuildMealPlanScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MealPlanController());
+    final targetDay = Get.arguments as String?;
+    final c = Get.find<MealPlanController>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -17,7 +18,6 @@ class BuildMealPlanScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // ── Top Row ──
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
@@ -26,17 +26,25 @@ class BuildMealPlanScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () => Get.back(),
-                    icon: const Icon(Icons.close,
-                        color: AppColors.textPrimary),
+                    icon: const Icon(Icons.close, color: AppColors.textPrimary),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),
+                  if (targetDay != null)
+                    Text(
+                      targetDay,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
                   IconButton(
-                    onPressed: () {
-                      // TODO: Search
-                    },
-                    icon: const Icon(Icons.search,
-                        color: AppColors.textPrimary),
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.search,
+                      color: AppColors.textPrimary,
+                    ),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),
@@ -45,7 +53,6 @@ class BuildMealPlanScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
 
-            // ── Title ──
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
@@ -59,7 +66,6 @@ class BuildMealPlanScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // ── Sections ──
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -67,18 +73,21 @@ class BuildMealPlanScreen extends StatelessWidget {
                     MealSection(
                       title: 'Most Popular',
                       meals: MealPlanController.mostPopular,
+                      targetDay: targetDay,
                       onSeeAll: () {},
                     ),
                     const SizedBox(height: 28),
                     MealSection(
                       title: 'Recently Created',
                       meals: MealPlanController.recentlyCreated,
+                      targetDay: targetDay,
                       onSeeAll: () {},
                     ),
                     const SizedBox(height: 28),
                     MealSection(
                       title: 'Recommended Plan',
                       meals: MealPlanController.recommendedPlan,
+                      targetDay: targetDay,
                       onSeeAll: () {},
                     ),
                     const SizedBox(height: 32),

@@ -8,11 +8,13 @@ import '../models/meal_model.dart';
 class MealCard extends StatelessWidget {
   final MealModel meal;
   final double width;
+  final String? targetDay;
 
   const MealCard({
     super.key,
     required this.meal,
     this.width = 150,
+    this.targetDay
   });
 
   @override
@@ -78,8 +80,13 @@ class MealCard extends StatelessWidget {
                   child: Obx(() {
                     final added = c.isAdded(meal.id);
                     return GestureDetector(
-                      onTap: () => c.toggleMeal(meal.id),
-                      child: Container(
+                      onTap: () {
+                        c.toggleMeal(meal.id);
+                        if (targetDay != null && !added) {
+                          c.addMealToDay(targetDay!, meal);
+                          Get.back();
+                        }
+                      }, child: Container(
                         width: 28, height: 28,
                         decoration: BoxDecoration(
                           color: added ? AppColors.primary : Colors.white,
