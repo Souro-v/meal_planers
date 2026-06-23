@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:meal_planers/features/grocerises/screens/groceries_screen.dart';
 import '../../../app/themes/app_colors.dart';
+import '../../favourites/controllers/favorites_controller.dart';
+import '../../favourites/screens/favorites_screen.dart';
+import '../../settings/screens/settings_screen.dart';
 import '../controllers/main_controller.dart';
 import 'meal_plan_screen.dart';
 
@@ -11,24 +14,26 @@ class MainScreen extends StatelessWidget {
   // ── Screens per tab ──
   static const _screens = [
     MealPlanScreen(),
-    GroceriesScreen(), // to be replace
-    Center(child: Text('Favourites')),  // to be replace
-    Center(child: Text('Settings')),    // to be replace
+    GroceriesScreen(),
+    FavoritesScreen(),
+    SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    Get.put(FavoritesController(), permanent: true);
     final c = Get.put(MainController());
 
     return Scaffold(
-      body: Obx(() => IndexedStack(
-        index: c.currentIndex.value,
-        children: _screens,
-      )),
-      bottomNavigationBar: Obx(() => _AppBottomNav(
-        currentIndex: c.currentIndex.value,
-        onTap: c.changeTab,
-      )),
+      body: Obx(
+        () => IndexedStack(index: c.currentIndex.value, children: _screens),
+      ),
+      bottomNavigationBar: Obx(
+        () => _AppBottomNav(
+          currentIndex: c.currentIndex.value,
+          onTap: c.changeTab,
+        ),
+      ),
     );
   }
 }
@@ -38,10 +43,7 @@ class _AppBottomNav extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
 
-  const _AppBottomNav({
-    required this.currentIndex,
-    required this.onTap,
-  });
+  const _AppBottomNav({required this.currentIndex, required this.onTap});
 
   static const _icons = [
     'assets/icons/home.png',
@@ -55,9 +57,7 @@ class _AppBottomNav extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
-        border: Border(
-          top: BorderSide(color: AppColors.border, width: 1),
-        ),
+        border: Border(top: BorderSide(color: AppColors.border, width: 1)),
       ),
       child: SafeArea(
         child: SizedBox(

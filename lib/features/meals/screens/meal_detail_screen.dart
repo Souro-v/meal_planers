@@ -6,6 +6,7 @@ import 'package:printing/printing.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
+import '../../favourites/controllers/favorites_controller.dart';
 import '../controllers/meal_detail_controller.dart';
 import '../models/meal_model.dart';
 import '../widgets/cooking_guide_popover.dart';
@@ -27,6 +28,7 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final meal = Get.arguments as MealModel;
     final c = Get.put(MealDetailController());
+    final favC = Get.find<FavoritesController>();
 
     return Scaffold(
       backgroundColor: const Color(0xFFFAF9F7),
@@ -58,20 +60,18 @@ class MealDetailScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: c.toggleFavorite,
-                          child: Icon(
-                            c.isFavorite.value
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: c.isFavorite.value
-                                ? Colors.red
-                                : AppColors.textSecondary,
-                            size: 24,
-                          ),
+                      Obx(() => GestureDetector(
+                        onTap: () => favC.toggleFavorite(meal),
+                        child: Icon(
+                          favC.isFavorite(meal.id)
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: favC.isFavorite(meal.id)
+                              ? Colors.red
+                              : AppColors.textSecondary,
+                          size: 24,
                         ),
-                      ),
+                      )),
                     ],
                   ),
                   const SizedBox(height: 6),

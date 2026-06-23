@@ -6,6 +6,7 @@ import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/verify_code_screen.dart';
 import '../../features/grocerises/screens/add_grocery_screen.dart';
+import '../../features/grocerises/screens/shop_online_screen.dart';
 import '../../features/home/screens/main_screen.dart';
 import '../../features/meals/screens/add_collection_screen.dart';
 import '../../features/meals/screens/add_notes_screen.dart';
@@ -20,6 +21,7 @@ import '../../features/onboarding/screens/select_allergies_screen.dart';
 import '../../features/onboarding/screens/select_dislikes_screen.dart';
 import '../../features/onboarding/screens/select_servings_screen.dart';
 import '../../features/onboarding/screens/set_reminder_screen.dart';
+import '../../features/settings/screens/settings_screen.dart';
 
 class AppRoutes {
   // ── Names ──────────────────────────────────
@@ -44,6 +46,8 @@ class AppRoutes {
   static const addCollection = '/add-collection';
   static const cookingMode = '/cooking-mode';
   static const addGrocery = '/add-grocery';
+  static const shopOnline = '/shop-online';
+  static const settings = '/settings';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -71,5 +75,7 @@ class AppRoutes {
     GetPage(name: addCollection, page: () => const AddCollectionScreen()),
     GetPage(name: cookingMode, page: () => const CookingModeScreen()),
     GetPage(name: addGrocery, page: () => const AddGroceryScreen()),
+    GetPage(name: shopOnline, page: () => const ShopOnlineScreen()),
+    GetPage(name: settings, page: () => const SettingsScreen()),
   ];
 }
