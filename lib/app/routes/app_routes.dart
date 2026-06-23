@@ -22,6 +22,7 @@ import '../../features/onboarding/screens/select_dislikes_screen.dart';
 import '../../features/onboarding/screens/select_servings_screen.dart';
 import '../../features/onboarding/screens/set_reminder_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/settings/screens/upgrade_screen.dart';
 
 class AppRoutes {
   // ── Names ──────────────────────────────────
@@ -48,6 +49,7 @@ class AppRoutes {
   static const addGrocery = '/add-grocery';
   static const shopOnline = '/shop-online';
   static const settings = '/settings';
+  static const upgrade = '/upgrade';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -77,5 +79,6 @@ class AppRoutes {
     GetPage(name: addGrocery, page: () => const AddGroceryScreen()),
     GetPage(name: shopOnline, page: () => const ShopOnlineScreen()),
     GetPage(name: settings, page: () => const SettingsScreen()),
+    GetPage(name: upgrade, page: () => const UpgradeScreen()),
   ];
 }

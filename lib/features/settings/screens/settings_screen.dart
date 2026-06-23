@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   static const _menuItems = [
-    (Icons.eco_outlined,         '1lb', 'Food Waste Savings'),
-    (Icons.tune,                 '',    'Eating Preferences'),
-    (Icons.restaurant_outlined,  '',    'Your Recipes'),
-    (Icons.share_outlined,       '',    'Share Mealtime'),
-    (Icons.people_outline,       '',    'Meet Our Chefs'),
+    (Icons.eco_outlined, '1lb', 'Food Waste Savings'),
+    (Icons.tune, '', 'Eating Preferences'),
+    (Icons.restaurant_outlined, '', 'Your Recipes'),
+    (Icons.share_outlined, '', 'Share Mealtime'),
+    (Icons.people_outline, '', 'Meet Our Chefs'),
   ];
+
+  void _showAccountMenu(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const _AccountMenuSheet(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +32,17 @@ class SettingsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // ── Title ──
               const Padding(
                 padding: EdgeInsets.fromLTRB(24, 20, 24, 24),
-                child: Text('Settings',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
-                    )),
+                child: Text(
+                  'Settings',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
               ),
 
               // ── Profile ──
@@ -41,34 +53,44 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         // Avatar
                         Container(
-                          width: 80, height: 80,
+                          width: 80,
+                          height: 80,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.backgroundGrey,
                             border: Border.all(
-                                color: AppColors.border, width: 2),
+                              color: AppColors.border,
+                              width: 2,
+                            ),
                           ),
-                          child: const Icon(Icons.person,
-                              size: 44,
-                              color: AppColors.textHint),
+                          child: const Icon(
+                            Icons.person,
+                            size: 44,
+                            color: AppColors.textHint,
+                          ),
                         ),
 
                         // FREE badge
                         Positioned(
-                          bottom: 0, right: 0,
+                          bottom: 0,
+                          right: 0,
                           child: Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 3),
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
                             decoration: BoxDecoration(
                               color: const Color(0xFF4CAF50),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: const Text('FREE',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                )),
+                            child: const Text(
+                              'FREE',
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -76,19 +98,27 @@ class SettingsScreen extends StatelessWidget {
                     const SizedBox(height: 12),
 
                     // Email
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('ramy@example.co.uk',
+                    GestureDetector(
+                      onTap: () => _showAccountMenu(context),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'ramy@example.co.uk',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: AppColors.textPrimary,
-                            )),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.keyboard_arrow_down,
-                            color: AppColors.textSecondary, size: 20),
-                      ],
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const Icon(
+                            Icons.keyboard_arrow_down,
+                            color: AppColors.textSecondary,
+                            size: 20,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -107,16 +137,18 @@ class SettingsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Upgrade to Pro',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.textPrimary,
-                          )),
+                      const Text(
+                        'Upgrade to Pro',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
                       const SizedBox(height: 6),
                       const Text(
                         'Get exclusive recipes, nutritional information, '
-                            'advanced filters, and more.',
+                        'advanced filters, and more.',
                         style: TextStyle(
                           fontSize: 13,
                           color: AppColors.textSecondary,
@@ -125,22 +157,25 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       SizedBox(
-                        width: double.infinity, height: 48,
+                        width: double.infinity,
+                        height: 48,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed(AppRoutes.upgrade),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                                borderRadius:
-                                BorderRadius.circular(12)),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
-                          child: const Text('Upgrade Now!',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                              )),
+                          child: const Text(
+                            'Upgrade Now!',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -159,53 +194,60 @@ class SettingsScreen extends StatelessWidget {
                     border: Border.all(color: AppColors.border),
                   ),
                   child: Column(
-                    children: List.generate(
-                        _menuItems.length, (i) {
+                    children: List.generate(_menuItems.length, (i) {
                       final isLast = i == _menuItems.length - 1;
                       return Column(
                         children: [
                           ListTile(
-                            contentPadding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 2),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 2,
+                            ),
                             leading: _menuItems[i].$2.isNotEmpty
                                 ? Container(
-                              width: 32, height: 32,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFE8F5E9),
-                                borderRadius:
-                                BorderRadius.circular(8),
-                              ),
-                              child: Center(
-                                child: Text(_menuItems[i].$2,
-                                    style: const TextStyle(
-                                      fontSize: 11,
-                                      fontWeight:
-                                      FontWeight.w700,
-                                      color: Color(0xFF388E3C),
-                                    )),
-                              ),
-                            )
-                                : Icon(_menuItems[i].$1,
+                                    width: 32,
+                                    height: 32,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFE8F5E9),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        _menuItems[i].$2,
+                                        style: const TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xFF388E3C),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Icon(
+                                    _menuItems[i].$1,
+                                    color: AppColors.textPrimary,
+                                    size: 22,
+                                  ),
+                            title: Text(
+                              _menuItems[i].$3,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
                                 color: AppColors.textPrimary,
-                                size: 22),
-                            title: Text(_menuItems[i].$3,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.textPrimary,
-                                )),
+                              ),
+                            ),
                             trailing: const Icon(
-                                Icons.chevron_right,
-                                color: AppColors.textHint),
+                              Icons.chevron_right,
+                              color: AppColors.textHint,
+                            ),
                             onTap: () {},
                           ),
                           if (!isLast)
                             const Divider(
-                                height: 1,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.divider),
+                              height: 1,
+                              indent: 16,
+                              endIndent: 16,
+                              color: AppColors.divider,
+                            ),
                         ],
                       );
                     }),
@@ -216,6 +258,76 @@ class SettingsScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _AccountMenuSheet extends StatelessWidget {
+  const _AccountMenuSheet();
+
+  static const _items = [
+    (Icons.person_outline, 'Edit Your Account'),
+    (Icons.swap_horiz, 'Switch Accounts'),
+    (Icons.add_circle_outline, 'Upgrade To Pro'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // ── Close ──
+          Align(
+            alignment: Alignment.centerRight,
+            child: GestureDetector(
+              onTap: () => Get.back(),
+              child: const Icon(
+                Icons.close,
+                color: AppColors.textSecondary,
+                size: 22,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+
+          // ── Menu Items ──
+          ...List.generate(
+            _items.length,
+            (i) => Column(
+              children: [
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: Icon(
+                    _items[i].$1,
+                    color: AppColors.textPrimary,
+                    size: 22,
+                  ),
+                  title: Text(
+                    _items[i].$2,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  onTap: () {
+                    Get.back();
+                    if (i == 2) Get.toNamed(AppRoutes.upgrade);
+                  },
+                ),
+                if (i < _items.length - 1)
+                  const Divider(height: 1, color: AppColors.divider),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
