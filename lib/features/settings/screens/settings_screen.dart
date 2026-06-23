@@ -1,0 +1,222 @@
+import 'package:flutter/material.dart';
+import '../../../app/themes/app_colors.dart';
+
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
+
+  static const _menuItems = [
+    (Icons.eco_outlined,         '1lb', 'Food Waste Savings'),
+    (Icons.tune,                 '',    'Eating Preferences'),
+    (Icons.restaurant_outlined,  '',    'Your Recipes'),
+    (Icons.share_outlined,       '',    'Share Mealtime'),
+    (Icons.people_outline,       '',    'Meet Our Chefs'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFAF9F7),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              // ── Title ──
+              const Padding(
+                padding: EdgeInsets.fromLTRB(24, 20, 24, 24),
+                child: Text('Settings',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
+                    )),
+              ),
+
+              // ── Profile ──
+              Center(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        // Avatar
+                        Container(
+                          width: 80, height: 80,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.backgroundGrey,
+                            border: Border.all(
+                                color: AppColors.border, width: 2),
+                          ),
+                          child: const Icon(Icons.person,
+                              size: 44,
+                              color: AppColors.textHint),
+                        ),
+
+                        // FREE badge
+                        Positioned(
+                          bottom: 0, right: 0,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 3),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF4CAF50),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Text('FREE',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                )),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+
+                    // Email
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('ramy@example.co.uk',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.textPrimary,
+                            )),
+                        const SizedBox(width: 4),
+                        const Icon(Icons.keyboard_arrow_down,
+                            color: AppColors.textSecondary, size: 20),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // ── Upgrade Card ──
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFF0D9),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Upgrade to Pro',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.textPrimary,
+                          )),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Get exclusive recipes, nutritional information, '
+                            'advanced filters, and more.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: AppColors.textSecondary,
+                          height: 1.5,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        width: double.infinity, height: 48,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primary,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                BorderRadius.circular(12)),
+                          ),
+                          child: const Text('Upgrade Now!',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // ── Menu Items ──
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppColors.border),
+                  ),
+                  child: Column(
+                    children: List.generate(
+                        _menuItems.length, (i) {
+                      final isLast = i == _menuItems.length - 1;
+                      return Column(
+                        children: [
+                          ListTile(
+                            contentPadding:
+                            const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 2),
+                            leading: _menuItems[i].$2.isNotEmpty
+                                ? Container(
+                              width: 32, height: 32,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE8F5E9),
+                                borderRadius:
+                                BorderRadius.circular(8),
+                              ),
+                              child: Center(
+                                child: Text(_menuItems[i].$2,
+                                    style: const TextStyle(
+                                      fontSize: 11,
+                                      fontWeight:
+                                      FontWeight.w700,
+                                      color: Color(0xFF388E3C),
+                                    )),
+                              ),
+                            )
+                                : Icon(_menuItems[i].$1,
+                                color: AppColors.textPrimary,
+                                size: 22),
+                            title: Text(_menuItems[i].$3,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.textPrimary,
+                                )),
+                            trailing: const Icon(
+                                Icons.chevron_right,
+                                color: AppColors.textHint),
+                            onTap: () {},
+                          ),
+                          if (!isLast)
+                            const Divider(
+                                height: 1,
+                                indent: 16,
+                                endIndent: 16,
+                                color: AppColors.divider),
+                        ],
+                      );
+                    }),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
