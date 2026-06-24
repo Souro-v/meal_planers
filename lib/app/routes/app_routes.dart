@@ -14,6 +14,8 @@ import '../../features/meals/screens/build_meal_plan_screen.dart';
 import '../../features/meals/screens/cooking_mode_screen.dart';
 import '../../features/meals/screens/feedback_screen.dart';
 import '../../features/meals/screens/meal_detail_screen.dart';
+import '../../features/meals/screens/search_screen.dart';
+import '../../features/meals/screens/see_all_screen.dart';
 import '../../features/meals/screens/select_collections_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/onboarding/screens/select_diet_screen.dart';
@@ -50,6 +52,8 @@ class AppRoutes {
   static const shopOnline = '/shop-online';
   static const settings = '/settings';
   static const upgrade = '/upgrade';
+  static const search = '/search';
+  static const seeAll = '/see-all';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -80,5 +84,7 @@ class AppRoutes {
     GetPage(name: shopOnline, page: () => const ShopOnlineScreen()),
     GetPage(name: settings, page: () => const SettingsScreen()),
     GetPage(name: upgrade, page: () => const UpgradeScreen()),
+    GetPage(name: search, page: () => const SearchScreen()),
+    GetPage(name: seeAll, page: () => const SeeAllScreen()),
   ];
 }
