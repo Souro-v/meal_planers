@@ -6,12 +6,16 @@ import '../controllers/meal_plan_controller.dart';
 class MealSearchController extends GetxController {
   final searchController = TextEditingController();
 
-  final query         = ''.obs;
+  final query = ''.obs;
   final selectedFilter = 'All'.obs;
 
   static const filters = [
-    'All', 'Quick (< 20 min)', 'Vegetarian',
-    'Vegan', 'High Protein', 'Pro',
+    'All',
+    'Quick (< 20 min)',
+    'Vegetarian',
+    'Vegan',
+    'High Protein',
+    'Pro',
   ];
 
   // ── All meals combined ──
@@ -31,31 +35,40 @@ class MealSearchController extends GetxController {
         break;
       case 'Quick (< 20 min)':
         list = list.where((m) {
-          final mins = int.tryParse(
-              m.duration.replaceAll(RegExp(r'[^0-9]'), '')) ?? 99;
+          final mins =
+              int.tryParse(m.duration.replaceAll(RegExp(r'[^0-9]'), '')) ?? 99;
           return mins <= 20;
         }).toList();
         break;
       case 'Vegetarian':
-        list = list.where((m) =>
-        m.name.toLowerCase().contains('salad') ||
-            m.name.toLowerCase().contains('vegan') ||
-            m.name.toLowerCase().contains('vegetable') ||
-            m.name.toLowerCase().contains('cauliflower') ||
-            m.name.toLowerCase().contains('tofu')
-        ).toList();
+        list = list
+            .where(
+              (m) =>
+                  m.name.toLowerCase().contains('salad') ||
+                  m.name.toLowerCase().contains('vegan') ||
+                  m.name.toLowerCase().contains('vegetable') ||
+                  m.name.toLowerCase().contains('cauliflower') ||
+                  m.name.toLowerCase().contains('tofu'),
+            )
+            .toList();
         break;
       case 'Vegan':
-        list = list.where((m) =>
-        m.name.toLowerCase().contains('vegan') ||
-            m.name.toLowerCase().contains('tofu') ||
-            m.name.toLowerCase().contains('vegetable')
-        ).toList();
+        list = list
+            .where(
+              (m) =>
+                  m.name.toLowerCase().contains('vegan') ||
+                  m.name.toLowerCase().contains('tofu') ||
+                  m.name.toLowerCase().contains('vegetable'),
+            )
+            .toList();
         break;
       case 'High Protein':
         list = list.where((m) {
-          final protein = int.tryParse(
-              m.nutrition?.protein.replaceAll(RegExp(r'[^0-9]'), '') ?? '0') ?? 0;
+          final protein =
+              int.tryParse(
+                m.nutrition?.protein.replaceAll(RegExp(r'[^0-9]'), '') ?? '0',
+              ) ??
+              0;
           return protein >= 30;
         }).toList();
         break;
@@ -63,9 +76,11 @@ class MealSearchController extends GetxController {
 
     // Search query
     if (query.value.isNotEmpty) {
-      list = list.where((m) =>
-          m.name.toLowerCase().contains(query.value.toLowerCase())
-      ).toList();
+      list = list
+          .where(
+            (m) => m.name.toLowerCase().contains(query.value.toLowerCase()),
+          )
+          .toList();
     }
 
     return list;

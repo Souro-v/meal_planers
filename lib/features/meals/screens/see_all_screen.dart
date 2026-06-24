@@ -11,7 +11,7 @@ class SeeAllScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // arguments: {'title': 'Most Popular', 'meals': [...]}
-    final args  = Get.arguments as Map<String, dynamic>;
+    final args = Get.arguments as Map<String, dynamic>;
     final title = args['title'] as String;
     final meals = args['meals'] as List<MealModel>;
 
@@ -21,7 +21,6 @@ class SeeAllScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // ── Header ──
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 12, 16, 0),
@@ -29,17 +28,22 @@ class SeeAllScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () => Get.back(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: AppColors.textPrimary),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: AppColors.textPrimary,
+                    ),
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),
                   const SizedBox(width: 8),
-                  Text(title,
-                      style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      )),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -48,10 +52,13 @@ class SeeAllScreen extends StatelessWidget {
             // ── Meal count ──
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Text('${meals.length} recipes',
-                  style: const TextStyle(
-                    fontSize: 13, color: AppColors.textSecondary,
-                  )),
+              child: Text(
+                '${meals.length} recipes',
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: AppColors.textSecondary,
+                ),
+              ),
             ),
             const SizedBox(height: 16),
 
@@ -59,8 +66,7 @@ class SeeAllScreen extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                gridDelegate:
-                const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 16,
@@ -79,6 +85,7 @@ class SeeAllScreen extends StatelessWidget {
 
 class _MealGridCard extends StatelessWidget {
   final MealModel meal;
+
   const _MealGridCard({required this.meal});
 
   @override
@@ -106,8 +113,10 @@ class _MealGridCard extends StatelessWidget {
                         color: AppColors.backgroundGrey,
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      child: const Icon(Icons.image_outlined,
-                          color: AppColors.textHint),
+                      child: const Icon(
+                        Icons.image_outlined,
+                        color: AppColors.textHint,
+                      ),
                     ),
                   ),
                 ),
@@ -115,46 +124,50 @@ class _MealGridCard extends StatelessWidget {
                 // ── Pro badge ──
                 if (meal.isPro)
                   Positioned(
-                    top: 8, left: 8,
+                    top: 8,
+                    left: 8,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: const Text('Pro',
-                          style: TextStyle(
-                            fontSize: 11, fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          )),
+                      child: const Text(
+                        'Pro',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
 
                 // ── + button ──
                 Positioned(
-                  top: 8, right: 8,
+                  top: 8,
+                  right: 8,
                   child: Obx(() {
                     final added = c.isAdded(meal.id);
                     return GestureDetector(
                       onTap: () => c.toggleMeal(meal.id),
                       child: Container(
-                        width: 28, height: 28,
+                        width: 28,
+                        height: 28,
                         decoration: BoxDecoration(
                           color: added ? AppColors.primary : Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: added
-                                ? AppColors.primary
-                                : AppColors.border,
+                            color: added ? AppColors.primary : AppColors.border,
                           ),
                         ),
                         child: Icon(
                           added ? Icons.check : Icons.add,
                           size: 16,
-                          color: added
-                              ? Colors.white
-                              : AppColors.textSecondary,
+                          color: added ? Colors.white : AppColors.textSecondary,
                         ),
                       ),
                     );
@@ -166,18 +179,25 @@ class _MealGridCard extends StatelessWidget {
           const SizedBox(height: 8),
 
           // ── Name ──
-          Text(meal.name,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: 13, color: AppColors.textPrimary, height: 1.4,
-              )),
+          Text(
+            meal.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 13,
+              color: AppColors.textPrimary,
+              height: 1.4,
+            ),
+          ),
 
           // ── Duration ──
-          Text(meal.duration,
-              style: const TextStyle(
-                fontSize: 11, color: AppColors.textSecondary,
-              )),
+          Text(
+            meal.duration,
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppColors.textSecondary,
+            ),
+          ),
         ],
       ),
     );

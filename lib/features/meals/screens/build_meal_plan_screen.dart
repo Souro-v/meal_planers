@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
 import '../controllers/meal_plan_controller.dart';
 import '../widgets/meal_section.dart';
@@ -10,7 +11,7 @@ class BuildMealPlanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final targetDay = Get.arguments as String?;
-    final c = Get.find<MealPlanController>();
+    // final c = Get.find<MealPlanController>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -40,7 +41,7 @@ class BuildMealPlanScreen extends StatelessWidget {
                       ),
                     ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(AppRoutes.search),
                     icon: const Icon(
                       Icons.search,
                       color: AppColors.textPrimary,

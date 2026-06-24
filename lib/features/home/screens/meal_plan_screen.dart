@@ -133,16 +133,21 @@ class _FilledState extends StatelessWidget {
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(Icons.add, color: Colors.white, size: 16),
-                        SizedBox(width: 4),
-                        Text('Add',
+                        const Icon(Icons.add, color: Colors.white, size: 16),
+                        const SizedBox(width: 4),
+                        const Text('Add',
                             style: TextStyle(
                               fontSize: 13, fontWeight: FontWeight.w600,
                               color: Colors.white,
                             )),
+                        IconButton(
+                          onPressed: () => Get.toNamed(AppRoutes.search),
+                          icon: const Icon(Icons.search, color: AppColors.textPrimary),
+                        ),
                       ],
+
                     ),
                   ),
                 ),
@@ -150,7 +155,6 @@ class _FilledState extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-
           // ── Week Selector ──
           Obx(() => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),

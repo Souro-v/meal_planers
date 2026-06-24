@@ -19,21 +19,21 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // ── Search Bar ──
             Padding(
               padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
               child: Row(
                 children: [
-
                   // Back button (Search screen থেকে এলে)
                   if (Get.previousRoute.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: GestureDetector(
                         onTap: () => Get.back(),
-                        child: const Icon(Icons.arrow_back,
-                            color: AppColors.textPrimary),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: AppColors.textPrimary,
+                        ),
                       ),
                     ),
 
@@ -50,38 +50,45 @@ class SearchScreen extends StatelessWidget {
                         autofocus: false,
                         onChanged: c.onSearch,
                         style: const TextStyle(
-                          fontSize: 15, color: AppColors.textPrimary,
+                          fontSize: 15,
+                          color: AppColors.textPrimary,
                         ),
                         decoration: const InputDecoration(
                           hintText: 'Search recipes...',
                           hintStyle: TextStyle(color: AppColors.textHint),
-                          prefixIcon: Icon(Icons.search,
-                              color: AppColors.textHint, size: 20),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: AppColors.textHint,
+                            size: 20,
+                          ),
                           border: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
-                          contentPadding:
-                          EdgeInsets.symmetric(vertical: 14),
+                          contentPadding: EdgeInsets.symmetric(vertical: 14),
                         ),
                       ),
                     ),
                   ),
 
                   // Clear button
-                  Obx(() => c.query.value.isNotEmpty
-                      ? Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: GestureDetector(
-                      onTap: c.clear,
-                      child: const Text('Cancel',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w500,
-                          )),
-                    ),
-                  )
-                      : const SizedBox()),
+                  Obx(
+                    () => c.query.value.isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: GestureDetector(
+                              onTap: c.clear,
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
+                  ),
                 ],
               ),
             ),
@@ -90,33 +97,34 @@ class SearchScreen extends StatelessWidget {
             // ── Filter Chips ──
             SizedBox(
               height: 36,
-              child: Obx(() => ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                itemCount: MealSearchController.filters.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 8),
-                itemBuilder: (_, i) {
-                  final filter = MealSearchController.filters[i];
-                  final selected =
-                      c.selectedFilter.value == filter;
-                  return GestureDetector(
-                    onTap: () => c.setFilter(filter),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: selected
-                            ? AppColors.primary
-                            : Colors.white,
-                        border: Border.all(
-                          color: selected
-                              ? AppColors.primary
-                              : AppColors.border,
+              child: Obx(
+                () => ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  itemCount: MealSearchController.filters.length,
+                  separatorBuilder: (_, __) => const SizedBox(width: 8),
+                  itemBuilder: (_, i) {
+                    final filter = MealSearchController.filters[i];
+                    final selected = c.selectedFilter.value == filter;
+                    return GestureDetector(
+                      onTap: () => c.setFilter(filter),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 8,
                         ),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(filter,
+                        decoration: BoxDecoration(
+                          color: selected ? AppColors.primary : Colors.white,
+                          border: Border.all(
+                            color: selected
+                                ? AppColors.primary
+                                : AppColors.border,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          filter,
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: selected
@@ -125,26 +133,31 @@ class SearchScreen extends StatelessWidget {
                             color: selected
                                 ? Colors.white
                                 : AppColors.textPrimary,
-                          )),
-                    ),
-                  );
-                },
-              )),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
             const SizedBox(height: 16),
 
             // ── Results count ──
-            Obx(() => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                c.query.value.isEmpty && c.selectedFilter.value == 'All'
-                    ? 'All Recipes'
-                    : '${c.results.length} results',
-                style: const TextStyle(
-                  fontSize: 13, color: AppColors.textSecondary,
+            Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  c.query.value.isEmpty && c.selectedFilter.value == 'All'
+                      ? 'All Recipes'
+                      : '${c.results.length} results',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ),
-            )),
+            ),
             const SizedBox(height: 12),
 
             // ── Results Grid ──
@@ -157,19 +170,27 @@ class SearchScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.search_off,
-                            size: 56, color: AppColors.textHint),
+                        Icon(
+                          Icons.search_off,
+                          size: 56,
+                          color: AppColors.textHint,
+                        ),
                         SizedBox(height: 16),
-                        Text('No recipes found',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: AppColors.textSecondary,
-                            )),
+                        Text(
+                          'No recipes found',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
                         SizedBox(height: 8),
-                        Text('Try a different keyword or filter',
-                            style: TextStyle(
-                              fontSize: 13, color: AppColors.textHint,
-                            )),
+                        Text(
+                          'Try a different keyword or filter',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: AppColors.textHint,
+                          ),
+                        ),
                       ],
                     ),
                   );
@@ -177,16 +198,14 @@ class SearchScreen extends StatelessWidget {
 
                 return GridView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
-                  gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 16,
                     childAspectRatio: 0.75,
                   ),
                   itemCount: results.length,
-                  itemBuilder: (_, i) =>
-                      _SearchResultCard(meal: results[i]),
+                  itemBuilder: (_, i) => _SearchResultCard(meal: results[i]),
                 );
               }),
             ),
@@ -200,6 +219,7 @@ class SearchScreen extends StatelessWidget {
 // ── Search Result Card ────────────────────────────────────
 class _SearchResultCard extends StatelessWidget {
   final MealModel meal;
+
   const _SearchResultCard({required this.meal});
 
   @override
@@ -222,58 +242,74 @@ class _SearchResultCard extends StatelessWidget {
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.backgroundGrey,
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: const Icon(Icons.image_outlined,
-                              color: AppColors.textHint),
-                        ),
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.backgroundGrey,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Icon(
+                        Icons.image_outlined,
+                        color: AppColors.textHint,
+                      ),
+                    ),
                   ),
                 ),
 
                 // ── Pro badge ──
                 if (meal.isPro)
                   Positioned(
-                    top: 8, left: 8,
+                    top: 8,
+                    left: 8,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: const Text('Pro',
-                          style: TextStyle(
-                            fontSize: 11, fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          )),
+                      child: const Text(
+                        'Pro',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
 
                 // ── Duration badge ──
                 Positioned(
-                  bottom: 8, left: 8,
+                  bottom: 8,
+                  left: 8,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 8, vertical: 3),
+                      horizontal: 8,
+                      vertical: 3,
+                    ),
                     decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha:0.55),
+                      color: Colors.black.withValues(alpha: 0.55),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.access_time,
-                            color: Colors.white, size: 11),
+                        const Icon(
+                          Icons.access_time,
+                          color: Colors.white,
+                          size: 11,
+                        ),
                         const SizedBox(width: 3),
-                        Text(meal.duration,
-                            style: const TextStyle(
-                              fontSize: 10, color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                            )),
+                        Text(
+                          meal.duration,
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -281,28 +317,26 @@ class _SearchResultCard extends StatelessWidget {
 
                 // ── + button ──
                 Positioned(
-                  top: 8, right: 8,
+                  top: 8,
+                  right: 8,
                   child: Obx(() {
                     final added = c.isAdded(meal.id);
                     return GestureDetector(
                       onTap: () => c.toggleMeal(meal.id),
                       child: Container(
-                        width: 28, height: 28,
+                        width: 28,
+                        height: 28,
                         decoration: BoxDecoration(
                           color: added ? AppColors.primary : Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: added
-                                ? AppColors.primary
-                                : AppColors.border,
+                            color: added ? AppColors.primary : AppColors.border,
                           ),
                         ),
                         child: Icon(
                           added ? Icons.check : Icons.add,
                           size: 16,
-                          color: added
-                              ? Colors.white
-                              : AppColors.textSecondary,
+                          color: added ? Colors.white : AppColors.textSecondary,
                         ),
                       ),
                     );
@@ -314,18 +348,25 @@ class _SearchResultCard extends StatelessWidget {
           const SizedBox(height: 8),
 
           // ── Name ──
-          Text(meal.name,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: 13, color: AppColors.textPrimary, height: 1.4,
-              )),
+          Text(
+            meal.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 13,
+              color: AppColors.textPrimary,
+              height: 1.4,
+            ),
+          ),
 
           // ── Servings ──
-          Text('${meal.servings} servings',
-              style: const TextStyle(
-                fontSize: 11, color: AppColors.textSecondary,
-              )),
+          Text(
+            '${meal.servings} servings',
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppColors.textSecondary,
+            ),
+          ),
         ],
       ),
     );
