@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meal_planers/features/grocerises/models/grocery_item_model.dart';
 import 'package:meal_planers/features/grocerises/screens/shop_online_screen.dart';
 import '../../../app/themes/app_colors.dart';
 import '../../../app/routes/app_routes.dart';
@@ -203,7 +204,7 @@ class _AllergenWarning extends StatelessWidget {
 
 // ── Grocery Tile ─────────────────────────────────────────
 class _GroceryTile extends StatelessWidget {
-  final item;
+  final GroceryItemModel item;
   final VoidCallback onToggle;
   final bool showDivider;
 

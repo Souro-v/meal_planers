@@ -4,6 +4,8 @@ import 'package:meal_planers/features/grocerises/screens/groceries_screen.dart';
 import '../../../app/themes/app_colors.dart';
 import '../../favourites/controllers/favorites_controller.dart';
 import '../../favourites/screens/favorites_screen.dart';
+import '../../meals/controllers/meal_plan_controller.dart';
+import '../../onboarding/controller/preference_controller.dart';
 import '../../settings/screens/settings_screen.dart';
 import '../controllers/main_controller.dart';
 import 'meal_plan_screen.dart';
@@ -22,6 +24,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(FavoritesController(), permanent: true);
+    Get.put(PreferenceController(), permanent: true);
+    Get.put(MealPlanController(), permanent: true);
     final c = Get.put(MainController());
 
     return Scaffold(

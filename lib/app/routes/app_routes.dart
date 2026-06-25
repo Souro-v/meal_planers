@@ -23,8 +23,14 @@ import '../../features/onboarding/screens/select_allergies_screen.dart';
 import '../../features/onboarding/screens/select_dislikes_screen.dart';
 import '../../features/onboarding/screens/select_servings_screen.dart';
 import '../../features/onboarding/screens/set_reminder_screen.dart';
+import '../../features/settings/screens/eating_preferences_screen.dart';
+import '../../features/settings/screens/edit_account_screen.dart';
+import '../../features/settings/screens/food_waste_screen.dart';
+import '../../features/settings/screens/meet_chefs_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
+import '../../features/settings/screens/share_mealtime_screen.dart';
 import '../../features/settings/screens/upgrade_screen.dart';
+import '../../features/settings/screens/your_recipes_screen.dart';
 
 class AppRoutes {
   // ── Names ──────────────────────────────────
@@ -54,6 +60,12 @@ class AppRoutes {
   static const upgrade = '/upgrade';
   static const search = '/search';
   static const seeAll = '/see-all';
+  static const editAccount = '/edit-account';
+  static const eatingPreferences = '/eating-preferences';
+  static const yourRecipes = '/your-recipes';
+  static const foodWaste = '/food-waste';
+  static const meetChefs = '/meet-chefs';
+  static const shareMealtime = '/share-mealtime';
 
   // ── Pages ──────────────────────────────────
   static final pages = [
@@ -86,5 +98,14 @@ class AppRoutes {
     GetPage(name: upgrade, page: () => const UpgradeScreen()),
     GetPage(name: search, page: () => const SearchScreen()),
     GetPage(name: seeAll, page: () => const SeeAllScreen()),
+    GetPage(name: editAccount, page: () => const EditAccountScreen()),
+    GetPage(
+      name: eatingPreferences,
+      page: () => const EatingPreferencesScreen(),
+    ),
+    GetPage(name: yourRecipes, page: () => const YourRecipesScreen()),
+    GetPage(name: foodWaste, page: () => const FoodWasteScreen()),
+    GetPage(name: meetChefs, page: () => const MeetChefsScreen()),
+    GetPage(name: shareMealtime, page: () => const ShareMealtimeScreen()),
   ];
 }

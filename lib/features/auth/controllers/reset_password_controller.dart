@@ -15,7 +15,7 @@ class ResetPasswordController extends GetxController {
   // ── OTP ──────────────────────────────────────
   final otpControllers = List.generate(4, (_) => TextEditingController());
   final otpFocusNodes = List.generate(4, (_) => FocusNode());
-
+  final otpLength      = 0.obs;
   String get otpCode => otpControllers.map((c) => c.text).join();
 
   bool get isOtpComplete => otpCode.length == 4;
@@ -39,6 +39,7 @@ class ResetPasswordController extends GetxController {
 
   // ── Loading ──────────────────────────────────
   final isLoading = false.obs;
+
 
   Future<void> sendCode() async {
     isLoading.value = true;
