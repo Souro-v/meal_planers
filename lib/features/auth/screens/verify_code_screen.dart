@@ -76,6 +76,7 @@ class VerifyCodeScreen extends StatelessWidget {
                         if (v.isEmpty && i > 0) {
                           c.otpFocusNodes[i - 1].requestFocus();
                         }
+                        c.otpLength.value = c.otpCode.length;
                       },
                     ),
                   ),

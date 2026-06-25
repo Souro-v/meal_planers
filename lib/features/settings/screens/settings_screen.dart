@@ -8,11 +8,11 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   static const _menuItems = [
-    (Icons.eco_outlined, '1lb', 'Food Waste Savings'),
-    (Icons.tune, '', 'Eating Preferences'),
-    (Icons.restaurant_outlined, '', 'Your Recipes'),
-    (Icons.share_outlined, '', 'Share Mealtime'),
-    (Icons.people_outline, '', 'Meet Our Chefs'),
+    (Icons.eco_outlined,        '1lb', 'Food Waste Savings',   '/food-waste'),
+    (Icons.tune,                '',    'Eating Preferences',    '/eating-preferences'),
+    (Icons.restaurant_outlined, '',    'Your Recipes',          '/your-recipes'),
+    (Icons.share_outlined,      '',    'Share Mealtime',        '/share-mealtime'),
+    (Icons.people_outline,      '',    'Meet Our Chefs',        '/meet-chefs'),
   ];
 
   void _showAccountMenu(BuildContext context) {
@@ -239,7 +239,11 @@ class SettingsScreen extends StatelessWidget {
                               Icons.chevron_right,
                               color: AppColors.textHint,
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              if (_menuItems[i].$4.isNotEmpty) {
+                                Get.toNamed(_menuItems[i].$4);
+                              }
+                            },
                           ),
                           if (!isLast)
                             const Divider(
@@ -319,6 +323,7 @@ class _AccountMenuSheet extends StatelessWidget {
                   ),
                   onTap: () {
                     Get.back();
+                    if (i == 0) Get.toNamed(AppRoutes.editAccount);
                     if (i == 2) Get.toNamed(AppRoutes.upgrade);
                   },
                 ),
