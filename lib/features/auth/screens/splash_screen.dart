@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:meal_planers/features/auth/controllers/auth_state_controller.dart';
 import '../../../app/themes/app_colors.dart';
 import '../../../app/routes/app_routes.dart';
 import '../../../shared/widgets/primary_button.dart';
@@ -9,6 +10,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(AuthStateController());
     return Scaffold(
       backgroundColor: const Color(0xFFFAF9F7),
       body: SafeArea(
@@ -35,9 +37,12 @@ class SplashScreen extends StatelessWidget {
                   color: AppColors.textPrimary,
                 ),
               ),
-
               const Spacer(),
-
+              const CircularProgressIndicator(
+                color: AppColors.primary,
+                strokeWidth: 2.5,
+              ),
+              const SizedBox(height: 40),
               // ── Get Started ──
               PrimaryButton(
                 text: 'Get Started',
