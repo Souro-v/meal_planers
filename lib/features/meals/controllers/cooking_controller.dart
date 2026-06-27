@@ -1,21 +1,22 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import '../models/meal_model.dart';
 
 class CookingController extends GetxController {
   final MealModel meal;
+
   CookingController(this.meal);
 
-  final currentStep      = 0.obs;
-  final timerSeconds     = 0.obs;
-  final isTimerRunning   = false.obs;
-  final activeTimerMins  = 0.obs;
+  final currentStep = 0.obs;
+  final timerSeconds = 0.obs;
+  final isTimerRunning = false.obs;
+  final activeTimerMins = 0.obs;
 
   Timer? _countdown;
 
   // ── Getters ──────────────────────────────
-  bool get isLastStep =>
-      currentStep.value >= meal.instructions.length - 1;
+  bool get isLastStep => currentStep.value >= meal.instructions.length - 1;
 
   InstructionModel get currentInstruction =>
       meal.instructions[currentStep.value];
@@ -25,6 +26,12 @@ class CookingController extends GetxController {
     final s = timerSeconds.value % 60;
     return '${m.toString().padLeft(2, '0')}:'
         '${s.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    WakelockPlus.enable();
   }
 
   // ── Navigation ───────────────────────────
@@ -44,9 +51,9 @@ class CookingController extends GetxController {
   // ── Timer ────────────────────────────────
   void startTimer(int minutes) {
     cancelTimer();
-    activeTimerMins.value  = minutes;
-    timerSeconds.value     = minutes * 60;
-    isTimerRunning.value   = true;
+    activeTimerMins.value = minutes;
+    timerSeconds.value = minutes * 60;
+    isTimerRunning.value = true;
 
     _countdown = Timer.periodic(const Duration(seconds: 1), (t) {
       if (timerSeconds.value > 0) {
@@ -62,14 +69,15 @@ class CookingController extends GetxController {
 
   void cancelTimer() {
     _countdown?.cancel();
-    _countdown           = null;
+    _countdown = null;
     isTimerRunning.value = false;
-    timerSeconds.value   = 0;
+    timerSeconds.value = 0;
     activeTimerMins.value = 0;
   }
 
   @override
   void onClose() {
+    WakelockPlus.disable();
     _countdown?.cancel();
     super.onClose();
   }
