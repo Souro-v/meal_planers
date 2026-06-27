@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../app/routes/app_routes.dart';
@@ -14,7 +15,7 @@ class MealCard extends StatelessWidget {
     super.key,
     required this.meal,
     this.width = 150,
-    this.targetDay
+    this.targetDay,
   });
 
   @override
@@ -22,42 +23,26 @@ class MealCard extends StatelessWidget {
     final c = Get.find<MealPlanController>();
 
     return GestureDetector(
-      onTap: ()=>Get.toNamed(AppRoutes.mealDetail,arguments: meal),
+      onTap: () => Get.toNamed(AppRoutes.mealDetail, arguments: meal),
       child: SizedBox(
         width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // ── Image + Badges ──
             Stack(
               children: [
-                // Food image
+                // Food image (Cloudinary / Network & Asset Ready)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    meal.imageUrl,
-                    width: width,
-                    height: width,
-                    fit: BoxFit.cover,
-                    // TODO: Cloudinary switch  Image.network()
-                    errorBuilder: (_, __, ___) => Container(
-                      width: width,
-                      height: width,
-                      decoration: BoxDecoration(
-                        color: AppColors.backgroundGrey,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Icon(Icons.image_outlined,
-                          color: AppColors.textHint),
-                    ),
-                  ),
+                  child: _buildImage(width),
                 ),
 
                 // Pro badge (top left)
                 if (meal.isPro)
                   Positioned(
-                    top: 8, left: 8,
+                    top: 8,
+                    left: 8,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 3),
@@ -76,7 +61,8 @@ class MealCard extends StatelessWidget {
 
                 // + / ✓ button (top right)
                 Positioned(
-                  top: 8, right: 8,
+                  top: 8,
+                  right: 8,
                   child: Obx(() {
                     final added = c.isAdded(meal.id);
                     return GestureDetector(
@@ -86,23 +72,21 @@ class MealCard extends StatelessWidget {
                           c.addMealToDay(targetDay!, meal);
                           Get.back();
                         }
-                      }, child: Container(
-                        width: 28, height: 28,
+                      },
+                      child: Container(
+                        width: 28,
+                        height: 28,
                         decoration: BoxDecoration(
                           color: added ? AppColors.primary : Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: added
-                                ? AppColors.primary
-                                : AppColors.border,
+                            color: added ? AppColors.primary : AppColors.border,
                           ),
                         ),
                         child: Icon(
                           added ? Icons.check : Icons.add,
                           size: 16,
-                          color: added
-                              ? Colors.white
-                              : AppColors.textSecondary,
+                          color: added ? Colors.white : AppColors.textSecondary,
                         ),
                       ),
                     );
@@ -125,6 +109,45 @@ class MealCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  // ── Image widget helper ──
+  Widget _buildImage(double size) {
+    final url = meal.imageUrl;
+    final isNetwork = url.startsWith('http');
+
+    if (isNetwork) {
+      return CachedNetworkImage(
+        imageUrl: url,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => Container(
+          color: AppColors.backgroundGrey,
+          child: const Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppColors.primary,
+            ),
+          ),
+        ),
+        errorWidget: (context, url, error) => Container(
+          color: AppColors.backgroundGrey,
+          child: const Icon(Icons.image_outlined, color: AppColors.textHint),
+        ),
+      );
+    }
+
+    return Image.asset(
+      url,
+      width: size,
+      height: size,
+      fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) => Container(
+        color: AppColors.backgroundGrey,
+        child: const Icon(Icons.image_outlined, color: AppColors.textHint),
       ),
     );
   }
