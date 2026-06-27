@@ -27,6 +27,30 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>
+	<key>NSCameraUsageDescription</key>
+    <string>Mealtime needs camera access to update your profile photo.</string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Mealtime needs photo library access to update your profile photo.</string>
+
+    <key>NSUserNotificationUsageDescription</key>
+    <string>Mealtime sends weekly reminders to help you plan your meals.</string>
+
+    <!-- Facebook Auth -->
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb<!-- YOUR_FACEBOOK_APP_ID --></string>
+        </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string><!-- YOUR_FACEBOOK_APP_ID --></string>
+    <key>FacebookClientToken</key>
+    <string><!-- YOUR_FACEBOOK_CLIENT_TOKEN --></string>
+
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
