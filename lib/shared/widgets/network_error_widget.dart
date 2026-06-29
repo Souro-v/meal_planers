@@ -40,8 +40,7 @@ class NetworkErrorWidget extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
               ),
-              icon: const Icon(Icons.refresh,
-                  color: Colors.white, size: 18),
+              icon: const Icon(Icons.refresh, color: Colors.white, size: 18),
               label: const Text('Try Again',
                   style: TextStyle(
                     fontSize: 15,

@@ -89,13 +89,11 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: active && !c.isLoginLoading.value
-                        ? c.login
-                        : null,
+                    onPressed:
+                        active && !c.isLoginLoading.value ? c.login : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: active
-                          ? AppColors.primary
-                          : const Color(0xFFDDDDDD),
+                      backgroundColor:
+                          active ? AppColors.primary : const Color(0xFFDDDDDD),
                       disabledBackgroundColor: const Color(0xFFDDDDDD),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
@@ -191,18 +189,18 @@ class _OrDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Row(
-    children: [
-      Expanded(child: Divider(color: AppColors.border)),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Text(
-          'Or',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 14),
-        ),
-      ),
-      Expanded(child: Divider(color: AppColors.border)),
-    ],
-  );
+        children: [
+          Expanded(child: Divider(color: AppColors.border)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'Or',
+              style: TextStyle(color: AppColors.textSecondary, fontSize: 14),
+            ),
+          ),
+          Expanded(child: Divider(color: AppColors.border)),
+        ],
+      );
 }
 
 class _SocialButton extends StatelessWidget {

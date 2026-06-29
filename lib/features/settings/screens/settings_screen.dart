@@ -3,16 +3,17 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import '../../../app/routes/app_routes.dart';
 import '../../../app/themes/app_colors.dart';
+import '../../../core/services/auth_api_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   static const _menuItems = [
-    (Icons.eco_outlined,        '1lb', 'Food Waste Savings',   '/food-waste'),
-    (Icons.tune,                '',    'Eating Preferences',    '/eating-preferences'),
-    (Icons.restaurant_outlined, '',    'Your Recipes',          '/your-recipes'),
-    (Icons.share_outlined,      '',    'Share Mealtime',        '/share-mealtime'),
-    (Icons.people_outline,      '',    'Meet Our Chefs',        '/meet-chefs'),
+    (Icons.eco_outlined, '1lb', 'Food Waste Savings', '/food-waste'),
+    (Icons.tune, '', 'Eating Preferences', '/eating-preferences'),
+    (Icons.restaurant_outlined, '', 'Your Recipes', '/your-recipes'),
+    (Icons.share_outlined, '', 'Share Mealtime', '/share-mealtime'),
+    (Icons.people_outline, '', 'Meet Our Chefs', '/meet-chefs'),
   ];
 
   void _showAccountMenu(BuildContext context) {
@@ -100,10 +101,10 @@ class SettingsScreen extends StatelessWidget {
                     // Email
                     GestureDetector(
                       onTap: () => _showAccountMenu(context),
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                           Text(
                             'ramy@example.co.uk',
                             style: TextStyle(
                               fontSize: 15,
@@ -111,8 +112,8 @@ class SettingsScreen extends StatelessWidget {
                               color: AppColors.textPrimary,
                             ),
                           ),
-                          const SizedBox(width: 4),
-                          const Icon(
+                           SizedBox(width: 4),
+                           Icon(
                             Icons.keyboard_arrow_down,
                             color: AppColors.textSecondary,
                             size: 20,
@@ -332,8 +333,76 @@ class _AccountMenuSheet extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 16),
+
+// ── Logout Button ──
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: SizedBox(
+              width: double.infinity,
+              height: 52,
+              child: OutlinedButton.icon(
+                onPressed: () => _showLogoutDialog(context),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.error),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                ),
+                icon:
+                    const Icon(Icons.logout, color: AppColors.error, size: 20),
+                label: const Text('Log Out',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.error,
+                    )),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 40),
         ],
       ),
     );
   }
+}
+
+void _showLogoutDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (_) => AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      title: const Text('Log Out',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          )),
+      content: const Text(
+        'Are you sure you want to log out?',
+        style: TextStyle(
+          fontSize: 14,
+          color: AppColors.textSecondary,
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Get.back(),
+          child: const Text('Cancel',
+              style: TextStyle(color: AppColors.textSecondary)),
+        ),
+        TextButton(
+          onPressed: () async {
+            Get.back();
+            await AuthApiService.logout();
+            Get.offAllNamed(AppRoutes.login);
+          },
+          child: const Text('Log Out',
+              style: TextStyle(
+                color: AppColors.error,
+                fontWeight: FontWeight.w600,
+              )),
+        ),
+      ],
+    ),
+  );
 }
