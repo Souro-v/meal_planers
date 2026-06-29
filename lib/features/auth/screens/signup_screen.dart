@@ -155,7 +155,7 @@ class SignUpScreen extends StatelessWidget {
               // ── Google ──
               _SocialButton(
                 text: 'Sign Up with Google',
-                onPressed: () {},
+                onPressed: () => c.signInWithGoogle(),
                 isGoogle: true,
               ),
               const SizedBox(height: 12),
@@ -163,7 +163,7 @@ class SignUpScreen extends StatelessWidget {
               // ── Facebook ──
               _SocialButton(
                 text: 'Sign Up with Facebook',
-                onPressed: () {},
+                onPressed: () => c.signInWithFacebook(),
                 isFacebook: true,
               ),
               const SizedBox(height: 24),

@@ -61,17 +61,17 @@ class MealDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       Obx(() => GestureDetector(
-                        onTap: () => favC.toggleFavorite(meal),
-                        child: Icon(
-                          favC.isFavorite(meal.id)
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: favC.isFavorite(meal.id)
-                              ? Colors.red
-                              : AppColors.textSecondary,
-                          size: 24,
-                        ),
-                      )),
+                            onTap: () => favC.toggleFavorite(meal),
+                            child: Icon(
+                              favC.isFavorite(meal.id)
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: favC.isFavorite(meal.id)
+                                  ? Colors.red
+                                  : AppColors.textSecondary,
+                              size: 24,
+                            ),
+                          )),
                     ],
                   ),
                   const SizedBox(height: 6),
@@ -385,18 +385,18 @@ class _InstructionsTab extends StatelessWidget {
                     if (instructions[i].items.isNotEmpty) ...[
                       const SizedBox(height: 8),
                       ...instructions[i].items.map(
-                        (item) => Padding(
-                          padding: const EdgeInsets.only(bottom: 2),
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              color: AppColors.textSecondary,
-                              height: 1.6,
+                            (item) => Padding(
+                              padding: const EdgeInsets.only(bottom: 2),
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: AppColors.textSecondary,
+                                  height: 1.6,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
                     ],
                   ],
                 ),
@@ -497,9 +497,8 @@ class _ActionMenu extends StatelessWidget {
   // ── Share ──────────────────────────────────
   void _share() {
     Get.back();
-    final ingredients = meal.ingredients
-        .map((i) => '• ${i.name}: ${i.quantity}')
-        .join('\n');
+    final ingredients =
+        meal.ingredients.map((i) => '• ${i.name}: ${i.quantity}').join('\n');
 
     Share.share(
       '🍽️ ${meal.name}\n\n'
@@ -523,7 +522,8 @@ class _ActionMenu extends StatelessWidget {
           children: [
             pw.Text(
               meal.name,
-              style: pw.TextStyle(fontSize: 22, fontWeight: pw.FontWeight.bold),
+              style: const pw.TextStyle(
+                  fontSize: 22, fontWeight: pw.FontWeight.bold),
             ),
             pw.SizedBox(height: 6),
             pw.Text(
@@ -535,7 +535,8 @@ class _ActionMenu extends StatelessWidget {
             // Ingredients
             pw.Text(
               'Ingredients',
-              style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+              style: const pw.TextStyle(
+                  fontSize: 16, fontWeight: pw.FontWeight.bold),
             ),
             pw.SizedBox(height: 8),
             ...meal.ingredients.map(
@@ -549,18 +550,19 @@ class _ActionMenu extends StatelessWidget {
             // Instructions
             pw.Text(
               'Instructions',
-              style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
+              style: const pw.TextStyle(
+                  fontSize: 16, fontWeight: pw.FontWeight.bold),
             ),
             pw.SizedBox(height: 8),
             ...meal.instructions.asMap().entries.map(
-              (e) => pw.Padding(
-                padding: const pw.EdgeInsets.only(bottom: 8),
-                child: pw.Text(
-                  '${e.key + 1}. ${e.value.step}',
-                  style: const pw.TextStyle(fontSize: 13),
+                  (e) => pw.Padding(
+                    padding: const pw.EdgeInsets.only(bottom: 8),
+                    child: pw.Text(
+                      '${e.key + 1}. ${e.value.step}',
+                      style: const pw.TextStyle(fontSize: 13),
+                    ),
+                  ),
                 ),
-              ),
-            ),
           ],
         ),
       ),
@@ -588,12 +590,24 @@ class _ActionMenu extends StatelessWidget {
     final actions = [
       (Icons.info_outline, 'Nutrition Facts', () => _showNutrition(context)),
       (
+        Icons.restaurant_menu, 'Open Cooking Mode',
+        () {
+          Get.back();
+          showModalBottomSheet(
+            context: context,
+            backgroundColor: Colors.transparent,
+            isScrollControlled: true,
+            builder: (_) => CookingGuidePopover(meal: meal),
+          );
+        }
+      ),
+      (
         Icons.sticky_note_2_outlined,
         'Add Notes',
         () {
           Get.back();
           Get.toNamed(AppRoutes.addNotes);
-        },
+        }
       ),
       (Icons.share_outlined, 'Share', _share),
       (Icons.print_outlined, 'Print', _print),
@@ -603,7 +617,7 @@ class _ActionMenu extends StatelessWidget {
         () {
           Get.back();
           Get.toNamed(AppRoutes.feedback);
-        },
+        }
       ),
       (
         Icons.bookmark_border,
@@ -611,7 +625,7 @@ class _ActionMenu extends StatelessWidget {
         () {
           Get.back();
           Get.toNamed(AppRoutes.selectCollections);
-        },
+        }
       ),
     ];
 

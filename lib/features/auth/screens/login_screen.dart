@@ -135,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                 text: 'Login with Google',
                 icon: FontAwesomeIcons.google,
                 iconColor: const Color(0xFF4285F4),
-                onPressed: () {},
+                onPressed: () => c.signInWithGoogle(),
               ),
               const SizedBox(height: 12),
 
@@ -146,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                 iconColor: Colors.white,
                 backgroundColor: const Color(0xFF1877F2),
                 textColor: Colors.white,
-                onPressed: () {},
+                onPressed: () => c.signInWithFacebook(),
               ),
               const SizedBox(height: 24),
 
