@@ -3,7 +3,6 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'auth_api_service.dart';
 
 class SocialAuthService {
-
   // ── Google ────────────────────────────────
   static final _google = GoogleSignIn(scopes: ['email', 'profile']);
 
@@ -11,7 +10,7 @@ class SocialAuthService {
     final account = await _google.signIn();
     if (account == null) return null;
 
-    final auth    = await account.authentication;
+    final auth = await account.authentication;
     final idToken = auth.idToken;
     if (idToken == null) return null;
 

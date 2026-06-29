@@ -14,8 +14,7 @@ class StorageService {
 
   static String? getToken() => _prefs.getString('auth_token');
 
-  static Future<void> clearToken() async =>
-      await _prefs.remove('auth_token');
+  static Future<void> clearToken() async => await _prefs.remove('auth_token');
 
   static bool get isLoggedIn => getToken() != null;
 
@@ -28,8 +27,7 @@ class StorageService {
     return s != null ? jsonDecode(s) : null;
   }
 
-  static Future<void> clearUser() async =>
-      await _prefs.remove('user');
+  static Future<void> clearUser() async => await _prefs.remove('user');
 
   // ── Favorites ─────────────────────────────
   static Future<void> saveFavoriteIds(List<String> ids) async =>

@@ -9,7 +9,7 @@ class NotificationService {
     tz.initializeTimeZones();
 
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const ios     = DarwinInitializationSettings(
+    const ios = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
@@ -24,18 +24,18 @@ class NotificationService {
   static Future<void> requestPermission() async {
     // iOS
     await _plugin
-        .resolvePlatformSpecificImplementation
-    <IOSFlutterLocalNotificationsPlugin>() // iOS
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>() // iOS
         ?.requestPermissions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+          alert: true,
+          badge: true,
+          sound: true,
+        );
 
     // Android 13+
     await _plugin
-        .resolvePlatformSpecificImplementation
-    <AndroidFlutterLocalNotificationsPlugin>()
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
         ?.requestNotificationsPermission();
   }
 
@@ -62,13 +62,12 @@ class NotificationService {
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
+          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
     );
   }
 
-  static tz.TZDateTime _nextWeekday(
-      int weekday, int hour, int minute) {
+  static tz.TZDateTime _nextWeekday(int weekday, int hour, int minute) {
     var scheduled = tz.TZDateTime(
       tz.local,
       tz.TZDateTime.now(tz.local).year,
@@ -86,6 +85,5 @@ class NotificationService {
     return scheduled;
   }
 
-  static Future<void> cancelAll() async =>
-      await _plugin.cancelAll();
+  static Future<void> cancelAll() async => await _plugin.cancelAll();
 }

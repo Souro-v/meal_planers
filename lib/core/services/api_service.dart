@@ -39,25 +39,25 @@ class ApiService {
 
   // ── GET ───────────────────────────────────
   static Future<Response> get(
-      String path, {
-        Map<String, dynamic>? params,
-      }) async {
+    String path, {
+    Map<String, dynamic>? params,
+  }) async {
     return await _dio.get(path, queryParameters: params);
   }
 
   // ── POST ──────────────────────────────────
   static Future<Response> post(
-      String path, {
-        Map<String, dynamic>? data,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+  }) async {
     return await _dio.post(path, data: data);
   }
 
   // ── PUT ───────────────────────────────────
   static Future<Response> put(
-      String path, {
-        Map<String, dynamic>? data,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+  }) async {
     return await _dio.put(path, data: data);
   }
 

@@ -1,9 +1,7 @@
-
 import 'api_service.dart';
 import 'storage_service.dart';
 
 class AuthApiService {
-
   // ── Sign Up ───────────────────────────────
   static Future<Map<String, dynamic>> signUp({
     required String name,
@@ -38,8 +36,7 @@ class AuthApiService {
 
   // ── Forgot Password ───────────────────────
   static Future<void> forgotPassword(String email) async {
-    await ApiService.post('/auth/forgot-password',
-        data: {'email': email});
+    await ApiService.post('/auth/forgot-password', data: {'email': email});
   }
 
   // ── Verify OTP ────────────────────────────
@@ -61,10 +58,9 @@ class AuthApiService {
   }
 
   // ── Google Sign In ────────────────────────
-  static Future<Map<String, dynamic>> googleSignIn(
-      String idToken) async {
-    final res = await ApiService.post('/auth/google',
-        data: {'id_token': idToken});
+  static Future<Map<String, dynamic>> googleSignIn(String idToken) async {
+    final res =
+        await ApiService.post('/auth/google', data: {'id_token': idToken});
     await StorageService.saveToken(res.data['token']);
     await StorageService.saveUser(res.data['user']);
     return res.data;
