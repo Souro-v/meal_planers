@@ -7,8 +7,7 @@ class StorageService {
   static Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
-
-  // ── Auth ──────────────────────────────────
+  // ── Auth
   static Future<void> saveToken(String token) async =>
       await _prefs.setString('auth_token', token);
 
@@ -18,7 +17,7 @@ class StorageService {
 
   static bool get isLoggedIn => getToken() != null;
 
-  // ── User ──────────────────────────────────
+  // ── User
   static Future<void> saveUser(Map<String, dynamic> user) async =>
       await _prefs.setString('user', jsonEncode(user));
 
@@ -56,7 +55,6 @@ class StorageService {
     final s = _prefs.getString('user_prefs');
     return s != null ? jsonDecode(s) : null;
   }
-
   // ── Onboarding ────────────────────────────
   static Future<void> setOnboardingDone() async =>
       await _prefs.setBool('onboarding_done', true);

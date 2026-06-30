@@ -183,6 +183,301 @@ class MealPlanController extends GetxController {
     ),
   ];
 
+  // vegetarian section added
+  // MealPlanController class এ এই static list add করো:
+
+  static const vegetarianMeals = [
+    MealModel(
+      id: 'veg1',
+      name: 'Paneer Tikka',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_paneer_tikka.jpeg',
+      duration: '35 minutes',
+      servings: 4,
+      cookware: ['Grill pan or tandoor', 'Mixing bowl', 'Skewers'],
+      ingredients: [
+        IngredientModel(name: 'paneer', quantity: '400g, cubed'),
+        IngredientModel(name: 'bell peppers', quantity: '2, cubed'),
+        IngredientModel(name: 'red onion', quantity: '1, cubed'),
+        IngredientModel(name: 'yogurt', quantity: '½ cup'),
+        IngredientModel(name: 'ginger garlic paste', quantity: '1 tbsp'),
+        IngredientModel(name: 'tandoori masala', quantity: '2 tbsp'),
+        IngredientModel(name: 'lemon juice', quantity: '1 tbsp'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Mix yogurt, ginger garlic paste, tandoori masala, and lemon juice in a bowl to make the marinade.',
+          items: ['½ cup yogurt', '1 tbsp ginger garlic paste', '2 tbsp tandoori masala', '1 tbsp lemon juice'],
+        ),
+        InstructionModel(
+          step: 'Add paneer, bell peppers, and onion to the marinade. Coat well and refrigerate for at least 30 minutes.',
+          items: ['400g paneer', '2 bell peppers', '1 red onion'],
+        ),
+        InstructionModel(
+          step: 'Thread marinated paneer and vegetables onto skewers, alternating pieces.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Grill on medium-high heat for 12-15 minutes, turning occasionally, until charred and cooked through.',
+          items: [],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 380, protein: '22g', carbs: '18g',
+        fat: '24g', fiber: '4g', sugar: '8g', sodium: '620mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg2',
+      name: 'Wild Mushroom Risotto',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_mushroom_risotto.jpeg',
+      duration: '40 minutes',
+      servings: 3,
+      cookware: ['Large saucepan', 'Wooden spoon', 'Small pot for broth'],
+      ingredients: [
+        IngredientModel(name: 'arborio rice', quantity: '1½ cups'),
+        IngredientModel(name: 'mixed wild mushrooms', quantity: '300g'),
+        IngredientModel(name: 'vegetable broth', quantity: '4 cups'),
+        IngredientModel(name: 'white wine', quantity: '½ cup'),
+        IngredientModel(name: 'parmesan cheese', quantity: '½ cup grated'),
+        IngredientModel(name: 'shallot', quantity: '1, minced'),
+        IngredientModel(name: 'butter', quantity: '3 tbsp'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Keep vegetable broth warm in a separate pot over low heat.',
+          items: ['4 cups vegetable broth'],
+        ),
+        InstructionModel(
+          step: 'Sauté mushrooms in 1 tbsp butter until golden. Set aside.',
+          items: ['300g mixed wild mushrooms', '1 tbsp butter'],
+        ),
+        InstructionModel(
+          step: 'In the same pan, sauté shallot in remaining butter until soft. Add rice and toast for 2 minutes.',
+          items: ['1 shallot', '2 tbsp butter', '1½ cups arborio rice'],
+        ),
+        InstructionModel(
+          step: 'Pour in white wine and stir until absorbed.',
+          items: ['½ cup white wine'],
+        ),
+        InstructionModel(
+          step: 'Add warm broth one ladle at a time, stirring constantly until absorbed before adding more. Continue for 20-25 minutes.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Stir in mushrooms and parmesan. Season and serve immediately.',
+          items: ['½ cup grated parmesan cheese'],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 420, protein: '14g', carbs: '58g',
+        fat: '16g', fiber: '3g', sugar: '4g', sodium: '780mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg3',
+      name: 'Stuffed Pasta Shells',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_stuffed_pasta.jpeg',
+      duration: '45 minutes',
+      servings: 4,
+      cookware: ['Large pot', 'Baking dish', 'Mixing bowl', 'Piping bag (optional)'],
+      ingredients: [
+        IngredientModel(name: 'jumbo pasta shells', quantity: '20 pieces'),
+        IngredientModel(name: 'ricotta cheese', quantity: '2 cups'),
+        IngredientModel(name: 'spinach', quantity: '2 cups, chopped'),
+        IngredientModel(name: 'mozzarella cheese', quantity: '1 cup shredded'),
+        IngredientModel(name: 'marinara sauce', quantity: '3 cups'),
+        IngredientModel(name: 'egg', quantity: '1'),
+        IngredientModel(name: 'fresh basil', quantity: '¼ cup chopped'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Boil pasta shells according to package instructions until al dente. Drain and set aside.',
+          items: ['20 jumbo pasta shells'],
+        ),
+        InstructionModel(
+          step: 'Mix ricotta, spinach, half the mozzarella, egg, and basil in a bowl.',
+          items: ['2 cups ricotta cheese', '2 cups chopped spinach', '1 egg', '¼ cup fresh basil'],
+        ),
+        InstructionModel(
+          step: 'Spread 1 cup marinara sauce in a baking dish. Stuff each shell with the ricotta mixture and arrange in the dish.',
+          items: ['3 cups marinara sauce'],
+        ),
+        InstructionModel(
+          step: 'Top with remaining marinara and mozzarella. Bake at 375°F for 25 minutes until bubbly.',
+          items: ['1 cup shredded mozzarella cheese'],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 460, protein: '24g', carbs: '48g',
+        fat: '20g', fiber: '4g', sugar: '8g', sodium: '920mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg4',
+      name: 'Thai Green Curry with Vegetables',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_thai_curry.jpeg',
+      duration: '30 minutes',
+      servings: 3,
+      cookware: ['Large wok or pan', 'Medium saucepan'],
+      ingredients: [
+        IngredientModel(name: 'green curry paste', quantity: '3 tbsp'),
+        IngredientModel(name: 'coconut milk', quantity: '1 can'),
+        IngredientModel(name: 'mixed vegetables', quantity: '3 cups (broccoli, carrots, bell pepper)'),
+        IngredientModel(name: 'tofu', quantity: '200g, cubed'),
+        IngredientModel(name: 'jasmine rice', quantity: '1 cup'),
+        IngredientModel(name: 'thai basil', quantity: '¼ cup'),
+        IngredientModel(name: 'soy sauce', quantity: '2 tbsp'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Cook jasmine rice according to package instructions.',
+          items: ['1 cup jasmine rice'],
+        ),
+        InstructionModel(
+          step: 'Heat curry paste in a wok over medium heat for 1 minute until fragrant.',
+          items: ['3 tbsp green curry paste'],
+        ),
+        InstructionModel(
+          step: 'Add coconut milk and bring to a simmer.',
+          items: ['1 can coconut milk'],
+        ),
+        InstructionModel(
+          step: 'Add vegetables and tofu. Simmer for 10-12 minutes until vegetables are tender.',
+          items: ['3 cups mixed vegetables', '200g tofu'],
+        ),
+        InstructionModel(
+          step: 'Stir in soy sauce and thai basil. Serve hot over rice.',
+          items: ['2 tbsp soy sauce', '¼ cup thai basil'],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 440, protein: '16g', carbs: '46g',
+        fat: '22g', fiber: '6g', sugar: '8g', sodium: '780mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg5',
+      name: 'Hearty Red Lentil Dal',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_lentil_dal.jpeg',
+      duration: '35 minutes',
+      servings: 4,
+      cookware: ['Large pot', 'Small pan for tempering'],
+      ingredients: [
+        IngredientModel(name: 'red lentils', quantity: '1½ cups'),
+        IngredientModel(name: 'onion', quantity: '1, diced'),
+        IngredientModel(name: 'tomato', quantity: '2, diced'),
+        IngredientModel(name: 'garlic', quantity: '4 cloves'),
+        IngredientModel(name: 'ginger', quantity: '1 inch piece'),
+        IngredientModel(name: 'turmeric powder', quantity: '1 tsp'),
+        IngredientModel(name: 'cumin seeds', quantity: '1 tsp'),
+        IngredientModel(name: 'ghee or oil', quantity: '2 tbsp'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Rinse lentils until water runs clear. Boil with turmeric and 4 cups water until soft, about 20 minutes.',
+          items: ['1½ cups red lentils', '1 tsp turmeric powder'],
+        ),
+        InstructionModel(
+          step: 'Meanwhile, mince garlic and ginger. Dice onion and tomato.',
+          items: ['4 cloves garlic', '1 inch ginger', '1 onion', '2 tomatoes'],
+        ),
+        InstructionModel(
+          step: 'Heat ghee in a pan, add cumin seeds until they sizzle. Add onion, garlic, ginger and sauté until golden.',
+          items: ['2 tbsp ghee or oil', '1 tsp cumin seeds'],
+        ),
+        InstructionModel(
+          step: 'Add tomatoes and cook until soft. Pour this tempering into the cooked lentils and simmer for 5 minutes.',
+          items: [],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 320, protein: '18g', carbs: '46g',
+        fat: '8g', fiber: '10g', sugar: '6g', sodium: '480mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg6',
+      name: 'Heirloom Tomato Caprese',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_caprese_salad.jpeg',
+      duration: '15 minutes',
+      servings: 2,
+      cookware: ['Sharp knife', 'Serving platter'],
+      ingredients: [
+        IngredientModel(name: 'heirloom tomatoes', quantity: '3 large, sliced'),
+        IngredientModel(name: 'fresh mozzarella', quantity: '200g, sliced'),
+        IngredientModel(name: 'fresh basil leaves', quantity: '¼ cup'),
+        IngredientModel(name: 'extra virgin olive oil', quantity: '3 tbsp'),
+        IngredientModel(name: 'balsamic glaze', quantity: '2 tbsp'),
+        IngredientModel(name: 'sea salt', quantity: 'to taste'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Slice tomatoes and mozzarella into even rounds.',
+          items: ['3 large heirloom tomatoes', '200g fresh mozzarella'],
+        ),
+        InstructionModel(
+          step: 'Arrange alternating slices of tomato and mozzarella on a platter.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Tuck fresh basil leaves between the slices.',
+          items: ['¼ cup fresh basil leaves'],
+        ),
+        InstructionModel(
+          step: 'Drizzle with olive oil and balsamic glaze. Season with sea salt and serve immediately.',
+          items: ['3 tbsp extra virgin olive oil', '2 tbsp balsamic glaze', 'sea salt to taste'],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 280, protein: '14g', carbs: '10g',
+        fat: '22g', fiber: '2g', sugar: '6g', sodium: '380mg',
+      ),
+    ),
+    MealModel(
+      id: 'veg7',
+      name: 'Classic Margherita Pizza',
+      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_margherita_pizza.jpeg',
+      isPro: true,
+      duration: '50 minutes',
+      servings: 4,
+      cookware: ['Pizza stone or baking sheet', 'Rolling pin', 'Mixing bowl'],
+      ingredients: [
+        IngredientModel(name: 'pizza dough', quantity: '1 ball (store-bought or homemade)'),
+        IngredientModel(name: 'san marzano tomatoes', quantity: '1 cup, crushed'),
+        IngredientModel(name: 'fresh mozzarella', quantity: '200g, torn'),
+        IngredientModel(name: 'fresh basil leaves', quantity: '¼ cup'),
+        IngredientModel(name: 'olive oil', quantity: '2 tbsp'),
+        IngredientModel(name: 'garlic', quantity: '1 clove, minced'),
+      ],
+      instructions: [
+        InstructionModel(
+          step: 'Preheat oven to 500°F with pizza stone inside, if using. Roll out pizza dough on a floured surface.',
+          items: ['1 ball pizza dough'],
+        ),
+        InstructionModel(
+          step: 'Mix crushed tomatoes with minced garlic and a pinch of salt for the sauce.',
+          items: ['1 cup san marzano tomatoes', '1 clove garlic'],
+        ),
+        InstructionModel(
+          step: 'Spread sauce evenly over the dough, leaving a border for the crust.',
+          items: [],
+        ),
+        InstructionModel(
+          step: 'Top with torn mozzarella pieces. Drizzle with olive oil.',
+          items: ['200g fresh mozzarella', '2 tbsp olive oil'],
+        ),
+        InstructionModel(
+          step: 'Bake for 10-12 minutes until crust is golden and cheese is bubbly. Top with fresh basil before serving.',
+          items: ['¼ cup fresh basil leaves'],
+        ),
+      ],
+      nutrition: NutritionModel(
+        calories: 520, protein: '22g', carbs: '58g',
+        fat: '22g', fiber: '3g', sugar: '6g', sodium: '780mg',
+      ),
+    ),
+  ];
+
   // ══════════════════════════════════════════
   //  RECENTLY CREATED
   // ══════════════════════════════════════════
