@@ -23,6 +23,7 @@ class MealSearchController extends GetxController {
     ...MealPlanController.mostPopular,
     ...MealPlanController.recentlyCreated,
     ...MealPlanController.recommendedPlan,
+    ...MealPlanController.vegetarianMeals,
   ];
 
   List<MealModel> get results {

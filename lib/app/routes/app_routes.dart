@@ -17,6 +17,7 @@ import '../../features/meals/screens/meal_detail_screen.dart';
 import '../../features/meals/screens/search_screen.dart';
 import '../../features/meals/screens/see_all_screen.dart';
 import '../../features/meals/screens/select_collections_screen.dart';
+import '../../features/meals/screens/vegetarian_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/onboarding/screens/select_diet_screen.dart';
 import '../../features/onboarding/screens/select_allergies_screen.dart';
@@ -66,7 +67,7 @@ class AppRoutes {
   static const foodWaste = '/food-waste';
   static const meetChefs = '/meet-chefs';
   static const shareMealtime = '/share-mealtime';
-
+  static const vegetarian = '/vegetarian';
   // ── Pages ──────────────────────────────────
   static final pages = [
     GetPage(name: splash, page: () => const SplashScreen()),
@@ -107,5 +108,7 @@ class AppRoutes {
     GetPage(name: foodWaste, page: () => const FoodWasteScreen()),
     GetPage(name: meetChefs, page: () => const MeetChefsScreen()),
     GetPage(name: shareMealtime, page: () => const ShareMealtimeScreen()),
+    GetPage(name: vegetarian, page: () => const VegetarianScreen()),
+
   ];
 }

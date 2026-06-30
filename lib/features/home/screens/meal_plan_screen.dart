@@ -15,9 +15,7 @@ class MealPlanScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFFFAF9F7),
-      body: Obx(() => c.hasAnyMeals
-          ? _FilledState(c: c)
-          : _EmptyState(c: c)),
+      body: Obx(() => c.hasAnyMeals ? _FilledState(c: c) : _EmptyState(c: c)),
     );
   }
 }
@@ -25,6 +23,7 @@ class MealPlanScreen extends StatelessWidget {
 // ── Empty State ──────────────────────────────────────────
 class _EmptyState extends StatelessWidget {
   final MealPlanController c;
+
   const _EmptyState({required this.c});
 
   @override
@@ -40,22 +39,27 @@ class _EmptyState extends StatelessWidget {
               'Your personalized\nmeal plan',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w700,
-                color: AppColors.textPrimary, height: 1.3,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+                height: 1.3,
               ),
             ),
             const SizedBox(height: 16),
             const Text(
               'Plan your meals for the entire week in minutes. '
-                  'Build your first meal plan to get started!',
+              'Build your first meal plan to get started!',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 14, color: AppColors.textSecondary, height: 1.6,
+                fontSize: 14,
+                color: AppColors.textSecondary,
+                height: 1.6,
               ),
             ),
             const SizedBox(height: 32),
             SizedBox(
-              width: double.infinity, height: 52,
+              width: double.infinity,
+              height: 52,
               child: ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
@@ -73,7 +77,8 @@ class _EmptyState extends StatelessWidget {
                 ),
                 child: const Text('Build Your First Meal Plan',
                     style: TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                     )),
               ),
@@ -89,15 +94,27 @@ class _EmptyState extends StatelessWidget {
 // ── Filled State ─────────────────────────────────────────
 class _FilledState extends StatelessWidget {
   final MealPlanController c;
+
   const _FilledState({required this.c});
 
   static const _days = [
-    'Monday', 'Tuesday', 'Wednesday',
-    'Thursday', 'Friday', 'Saturday', 'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
   ];
 
   static const _short = [
-    'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
   ];
 
   @override
@@ -105,7 +122,6 @@ class _FilledState extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-
           // ── Header ──
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
@@ -114,7 +130,8 @@ class _FilledState extends StatelessWidget {
               children: [
                 const Text('Meal Plan',
                     style: TextStyle(
-                      fontSize: 26, fontWeight: FontWeight.w700,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.textPrimary,
                     )),
                 GestureDetector(
@@ -127,8 +144,8 @@ class _FilledState extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(20),
@@ -139,15 +156,16 @@ class _FilledState extends StatelessWidget {
                         const SizedBox(width: 4),
                         const Text('Add',
                             style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
                               color: Colors.white,
                             )),
                         IconButton(
                           onPressed: () => Get.toNamed(AppRoutes.search),
-                          icon: const Icon(Icons.search, color: AppColors.textPrimary),
+                          icon: const Icon(Icons.search,
+                              color: AppColors.textPrimary),
                         ),
                       ],
-
                     ),
                   ),
                 ),
@@ -157,119 +175,175 @@ class _FilledState extends StatelessWidget {
           const SizedBox(height: 12),
           // ── Week Selector ──
           Obx(() => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: c.prevWeek,
-                  child: const Icon(Icons.chevron_left,
-                      color: AppColors.textSecondary),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    c.weekRangeLabel,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w500,
-                      color: AppColors.textPrimary,
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: c.prevWeek,
+                      child: const Icon(Icons.chevron_left,
+                          color: AppColors.textSecondary),
                     ),
-                  ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        c.weekRangeLabel,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: c.nextWeek,
+                      child: const Icon(Icons.chevron_right,
+                          color: AppColors.textSecondary),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 8),
-                GestureDetector(
-                  onTap: c.nextWeek,
-                  child: const Icon(Icons.chevron_right,
-                      color: AppColors.textSecondary),
+              )),
+          const SizedBox(height: 8),
+
+          // ── Vegetarian Banner ──
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: GestureDetector(
+              onTap: () => Get.toNamed(AppRoutes.vegetarian),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE8F5E9),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-              ],
+                child: Row(
+                  children: [
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF4CAF50),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child:
+                          const Icon(Icons.eco, color: Colors.white, size: 26),
+                    ),
+                    const SizedBox(width: 14),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Vegetarian Recipes',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.textPrimary,
+                              )),
+                          SizedBox(height: 2),
+                          Text('7 plant-based meals to try',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.textSecondary,
+                              )),
+                        ],
+                      ),
+                    ),
+                    const Icon(Icons.chevron_right,
+                        color: AppColors.textSecondary),
+                  ],
+                ),
+              ),
             ),
-          )),
+          ),
           const SizedBox(height: 20),
 
           // ── Day List ──
           Expanded(
             child: Obx(() => ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              itemCount: _days.length,
-              itemBuilder: (_, i) {
-                final day    = _days[i];
-                final date   = c.weekDay(i);
-                final meals  = c.weeklyPlan[day] ?? [];
-                final isToday = date.day == DateTime.now().day
-                    && date.month == DateTime.now().month
-                    && c.weekOffset.value == 0;
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  itemCount: _days.length,
+                  itemBuilder: (_, i) {
+                    final day = _days[i];
+                    final date = c.weekDay(i);
+                    final meals = c.weeklyPlan[day] ?? [];
+                    final isToday = date.day == DateTime.now().day &&
+                        date.month == DateTime.now().month &&
+                        c.weekOffset.value == 0;
 
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    // ── Day header ──
-                    Row(
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 38, height: 38,
-                          decoration: BoxDecoration(
-                            color: isToday
-                                ? AppColors.primary
-                                : AppColors.backgroundGrey,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(_short[i],
-                                    style: TextStyle(
-                                      fontSize: 10, fontWeight: FontWeight.w600,
-                                      color: isToday
-                                          ? Colors.white
-                                          : AppColors.textSecondary,
-                                    )),
-                                Text('${date.day}',
-                                    style: TextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.w700,
-                                      color: isToday
-                                          ? Colors.white
-                                          : AppColors.textPrimary,
-                                    )),
-                              ],
+                        // ── Day header ──
+                        Row(
+                          children: [
+                            Container(
+                              width: 38,
+                              height: 38,
+                              decoration: BoxDecoration(
+                                color: isToday
+                                    ? AppColors.primary
+                                    : AppColors.backgroundGrey,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(_short[i],
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                          color: isToday
+                                              ? Colors.white
+                                              : AppColors.textSecondary,
+                                        )),
+                                    Text('${date.day}',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          color: isToday
+                                              ? Colors.white
+                                              : AppColors.textPrimary,
+                                        )),
+                                  ],
+                                ),
+                              ),
                             ),
+                            const SizedBox(width: 12),
+                            Text(day,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: isToday
+                                      ? AppColors.primary
+                                      : AppColors.textPrimary,
+                                )),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+
+                        // ── Meals or empty row ──
+                        if (meals.isEmpty)
+                          _EmptyDaySlot(
+                            day: day,
+                            onAdd: () => Get.toNamed(
+                              AppRoutes.buildMealPlan,
+                              arguments: day,
+                            ),
+                          )
+                        else
+                          _MealRow(
+                            day: day,
+                            meals: meals,
+                            controller: c,
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Text(day,
-                            style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w600,
-                              color: isToday
-                                  ? AppColors.primary
-                                  : AppColors.textPrimary,
-                            )),
+
+                        const SizedBox(height: 20),
                       ],
-                    ),
-                    const SizedBox(height: 12),
-
-                    // ── Meals or empty row ──
-                    if (meals.isEmpty)
-                      _EmptyDaySlot(
-                        day: day,
-                        onAdd: () => Get.toNamed(
-                          AppRoutes.buildMealPlan,
-                          arguments: day,
-                        ),
-                      )
-                    else
-                      _MealRow(
-                        day: day,
-                        meals: meals,
-                        controller: c,
-                      ),
-
-                    const SizedBox(height: 20),
-                  ],
-                );
-              },
-            )),
+                    );
+                  },
+                )),
           ),
         ],
       ),
@@ -281,6 +355,7 @@ class _FilledState extends StatelessWidget {
 class _EmptyDaySlot extends StatelessWidget {
   final String day;
   final VoidCallback onAdd;
+
   const _EmptyDaySlot({required this.day, required this.onAdd});
 
   @override
@@ -302,7 +377,8 @@ class _EmptyDaySlot extends StatelessWidget {
             SizedBox(width: 6),
             Text('Add a meal',
                 style: TextStyle(
-                  fontSize: 14, color: AppColors.textHint,
+                  fontSize: 14,
+                  color: AppColors.textHint,
                 )),
           ],
         ),
@@ -316,6 +392,7 @@ class _MealRow extends StatelessWidget {
   final String day;
   final List<MealModel> meals;
   final MealPlanController controller;
+
   const _MealRow({
     required this.day,
     required this.meals,
@@ -352,7 +429,8 @@ class _MealRow extends StatelessWidget {
                     SizedBox(height: 4),
                     Text('Add',
                         style: TextStyle(
-                          fontSize: 12, color: AppColors.textHint,
+                          fontSize: 12,
+                          color: AppColors.textHint,
                         )),
                   ],
                 ),
@@ -378,18 +456,20 @@ class _MealRow extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
                           meal.imageUrl,
-                          width: 120, height: 110,
+                          width: 120,
+                          height: 110,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) =>
                               Container(
-                                width: 120, height: 110,
-                                decoration: BoxDecoration(
-                                  color: AppColors.backgroundGrey,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: const Icon(Icons.image_outlined,
-                                    color: AppColors.textHint),
-                              ),
+                            width: 120,
+                            height: 110,
+                            decoration: BoxDecoration(
+                              color: AppColors.backgroundGrey,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.image_outlined,
+                                color: AppColors.textHint),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -407,12 +487,13 @@ class _MealRow extends StatelessWidget {
 
                 // ── Remove button ──
                 Positioned(
-                  top: 6, right: 6,
+                  top: 6,
+                  right: 6,
                   child: GestureDetector(
-                    onTap: () =>
-                        controller.removeMealFromDay(day, meal.id),
+                    onTap: () => controller.removeMealFromDay(day, meal.id),
                     child: Container(
-                      width: 22, height: 22,
+                      width: 22,
+                      height: 22,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
