@@ -184,13 +184,13 @@ class MealPlanController extends GetxController {
   ];
 
   // vegetarian section added
-  // MealPlanController class এ এই static list add করো:
 
   static const vegetarianMeals = [
     MealModel(
       id: 'veg1',
       name: 'Paneer Tikka',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_paneer_tikka.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_paneer_tikka.jpeg',
       duration: '35 minutes',
       servings: 4,
       cookware: ['Grill pan or tandoor', 'Mixing bowl', 'Skewers'],
@@ -205,31 +205,46 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Mix yogurt, ginger garlic paste, tandoori masala, and lemon juice in a bowl to make the marinade.',
-          items: ['½ cup yogurt', '1 tbsp ginger garlic paste', '2 tbsp tandoori masala', '1 tbsp lemon juice'],
+          step:
+              'Mix yogurt, ginger garlic paste, tandoori masala, and lemon juice in a bowl to make the marinade.',
+          items: [
+            '½ cup yogurt',
+            '1 tbsp ginger garlic paste',
+            '2 tbsp tandoori masala',
+            '1 tbsp lemon juice'
+          ],
         ),
         InstructionModel(
-          step: 'Add paneer, bell peppers, and onion to the marinade. Coat well and refrigerate for at least 30 minutes.',
+          step:
+              'Add paneer, bell peppers, and onion to the marinade. Coat well and refrigerate for at least 30 minutes.',
           items: ['400g paneer', '2 bell peppers', '1 red onion'],
         ),
         InstructionModel(
-          step: 'Thread marinated paneer and vegetables onto skewers, alternating pieces.',
+          step:
+              'Thread marinated paneer and vegetables onto skewers, alternating pieces.',
           items: [],
         ),
         InstructionModel(
-          step: 'Grill on medium-high heat for 12-15 minutes, turning occasionally, until charred and cooked through.',
+          step:
+              'Grill on medium-high heat for 12-15 minutes, turning occasionally, until charred and cooked through.',
           items: [],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 380, protein: '22g', carbs: '18g',
-        fat: '24g', fiber: '4g', sugar: '8g', sodium: '620mg',
+        calories: 380,
+        protein: '22g',
+        carbs: '18g',
+        fat: '24g',
+        fiber: '4g',
+        sugar: '8g',
+        sodium: '620mg',
       ),
     ),
     MealModel(
       id: 'veg2',
       name: 'Wild Mushroom Risotto',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_mushroom_risotto.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_mushroom_risotto.jpeg',
       duration: '40 minutes',
       servings: 3,
       cookware: ['Large saucepan', 'Wooden spoon', 'Small pot for broth'],
@@ -252,7 +267,8 @@ class MealPlanController extends GetxController {
           items: ['300g mixed wild mushrooms', '1 tbsp butter'],
         ),
         InstructionModel(
-          step: 'In the same pan, sauté shallot in remaining butter until soft. Add rice and toast for 2 minutes.',
+          step:
+              'In the same pan, sauté shallot in remaining butter until soft. Add rice and toast for 2 minutes.',
           items: ['1 shallot', '2 tbsp butter', '1½ cups arborio rice'],
         ),
         InstructionModel(
@@ -260,7 +276,8 @@ class MealPlanController extends GetxController {
           items: ['½ cup white wine'],
         ),
         InstructionModel(
-          step: 'Add warm broth one ladle at a time, stirring constantly until absorbed before adding more. Continue for 20-25 minutes.',
+          step:
+              'Add warm broth one ladle at a time, stirring constantly until absorbed before adding more. Continue for 20-25 minutes.',
           items: [],
         ),
         InstructionModel(
@@ -269,17 +286,28 @@ class MealPlanController extends GetxController {
         ),
       ],
       nutrition: NutritionModel(
-        calories: 420, protein: '14g', carbs: '58g',
-        fat: '16g', fiber: '3g', sugar: '4g', sodium: '780mg',
+        calories: 420,
+        protein: '14g',
+        carbs: '58g',
+        fat: '16g',
+        fiber: '3g',
+        sugar: '4g',
+        sodium: '780mg',
       ),
     ),
     MealModel(
       id: 'veg3',
       name: 'Stuffed Pasta Shells',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_stuffed_pasta.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_stuffed_pasta.jpeg',
       duration: '45 minutes',
       servings: 4,
-      cookware: ['Large pot', 'Baking dish', 'Mixing bowl', 'Piping bag (optional)'],
+      cookware: [
+        'Large pot',
+        'Baking dish',
+        'Mixing bowl',
+        'Piping bag (optional)'
+      ],
       ingredients: [
         IngredientModel(name: 'jumbo pasta shells', quantity: '20 pieces'),
         IngredientModel(name: 'ricotta cheese', quantity: '2 cups'),
@@ -291,38 +319,55 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Boil pasta shells according to package instructions until al dente. Drain and set aside.',
+          step:
+              'Boil pasta shells according to package instructions until al dente. Drain and set aside.',
           items: ['20 jumbo pasta shells'],
         ),
         InstructionModel(
-          step: 'Mix ricotta, spinach, half the mozzarella, egg, and basil in a bowl.',
-          items: ['2 cups ricotta cheese', '2 cups chopped spinach', '1 egg', '¼ cup fresh basil'],
+          step:
+              'Mix ricotta, spinach, half the mozzarella, egg, and basil in a bowl.',
+          items: [
+            '2 cups ricotta cheese',
+            '2 cups chopped spinach',
+            '1 egg',
+            '¼ cup fresh basil'
+          ],
         ),
         InstructionModel(
-          step: 'Spread 1 cup marinara sauce in a baking dish. Stuff each shell with the ricotta mixture and arrange in the dish.',
+          step:
+              'Spread 1 cup marinara sauce in a baking dish. Stuff each shell with the ricotta mixture and arrange in the dish.',
           items: ['3 cups marinara sauce'],
         ),
         InstructionModel(
-          step: 'Top with remaining marinara and mozzarella. Bake at 375°F for 25 minutes until bubbly.',
+          step:
+              'Top with remaining marinara and mozzarella. Bake at 375°F for 25 minutes until bubbly.',
           items: ['1 cup shredded mozzarella cheese'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 460, protein: '24g', carbs: '48g',
-        fat: '20g', fiber: '4g', sugar: '8g', sodium: '920mg',
+        calories: 460,
+        protein: '24g',
+        carbs: '48g',
+        fat: '20g',
+        fiber: '4g',
+        sugar: '8g',
+        sodium: '920mg',
       ),
     ),
     MealModel(
       id: 'veg4',
       name: 'Thai Green Curry with Vegetables',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_thai_curry.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_thai_curry.jpeg',
       duration: '30 minutes',
       servings: 3,
       cookware: ['Large wok or pan', 'Medium saucepan'],
       ingredients: [
         IngredientModel(name: 'green curry paste', quantity: '3 tbsp'),
         IngredientModel(name: 'coconut milk', quantity: '1 can'),
-        IngredientModel(name: 'mixed vegetables', quantity: '3 cups (broccoli, carrots, bell pepper)'),
+        IngredientModel(
+            name: 'mixed vegetables',
+            quantity: '3 cups (broccoli, carrots, bell pepper)'),
         IngredientModel(name: 'tofu', quantity: '200g, cubed'),
         IngredientModel(name: 'jasmine rice', quantity: '1 cup'),
         IngredientModel(name: 'thai basil', quantity: '¼ cup'),
@@ -334,7 +379,8 @@ class MealPlanController extends GetxController {
           items: ['1 cup jasmine rice'],
         ),
         InstructionModel(
-          step: 'Heat curry paste in a wok over medium heat for 1 minute until fragrant.',
+          step:
+              'Heat curry paste in a wok over medium heat for 1 minute until fragrant.',
           items: ['3 tbsp green curry paste'],
         ),
         InstructionModel(
@@ -342,7 +388,8 @@ class MealPlanController extends GetxController {
           items: ['1 can coconut milk'],
         ),
         InstructionModel(
-          step: 'Add vegetables and tofu. Simmer for 10-12 minutes until vegetables are tender.',
+          step:
+              'Add vegetables and tofu. Simmer for 10-12 minutes until vegetables are tender.',
           items: ['3 cups mixed vegetables', '200g tofu'],
         ),
         InstructionModel(
@@ -351,14 +398,20 @@ class MealPlanController extends GetxController {
         ),
       ],
       nutrition: NutritionModel(
-        calories: 440, protein: '16g', carbs: '46g',
-        fat: '22g', fiber: '6g', sugar: '8g', sodium: '780mg',
+        calories: 440,
+        protein: '16g',
+        carbs: '46g',
+        fat: '22g',
+        fiber: '6g',
+        sugar: '8g',
+        sodium: '780mg',
       ),
     ),
     MealModel(
       id: 'veg5',
       name: 'Hearty Red Lentil Dal',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_lentil_dal.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_lentil_dal.jpeg',
       duration: '35 minutes',
       servings: 4,
       cookware: ['Large pot', 'Small pan for tempering'],
@@ -374,7 +427,8 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Rinse lentils until water runs clear. Boil with turmeric and 4 cups water until soft, about 20 minutes.',
+          step:
+              'Rinse lentils until water runs clear. Boil with turmeric and 4 cups water until soft, about 20 minutes.',
           items: ['1½ cups red lentils', '1 tsp turmeric powder'],
         ),
         InstructionModel(
@@ -382,23 +436,31 @@ class MealPlanController extends GetxController {
           items: ['4 cloves garlic', '1 inch ginger', '1 onion', '2 tomatoes'],
         ),
         InstructionModel(
-          step: 'Heat ghee in a pan, add cumin seeds until they sizzle. Add onion, garlic, ginger and sauté until golden.',
+          step:
+              'Heat ghee in a pan, add cumin seeds until they sizzle. Add onion, garlic, ginger and sauté until golden.',
           items: ['2 tbsp ghee or oil', '1 tsp cumin seeds'],
         ),
         InstructionModel(
-          step: 'Add tomatoes and cook until soft. Pour this tempering into the cooked lentils and simmer for 5 minutes.',
+          step:
+              'Add tomatoes and cook until soft. Pour this tempering into the cooked lentils and simmer for 5 minutes.',
           items: [],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 320, protein: '18g', carbs: '46g',
-        fat: '8g', fiber: '10g', sugar: '6g', sodium: '480mg',
+        calories: 320,
+        protein: '18g',
+        carbs: '46g',
+        fat: '8g',
+        fiber: '10g',
+        sugar: '6g',
+        sodium: '480mg',
       ),
     ),
     MealModel(
       id: 'veg6',
       name: 'Heirloom Tomato Caprese',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_caprese_salad.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_caprese_salad.jpeg',
       duration: '15 minutes',
       servings: 2,
       cookware: ['Sharp knife', 'Serving platter'],
@@ -416,7 +478,8 @@ class MealPlanController extends GetxController {
           items: ['3 large heirloom tomatoes', '200g fresh mozzarella'],
         ),
         InstructionModel(
-          step: 'Arrange alternating slices of tomato and mozzarella on a platter.',
+          step:
+              'Arrange alternating slices of tomato and mozzarella on a platter.',
           items: [],
         ),
         InstructionModel(
@@ -424,26 +487,39 @@ class MealPlanController extends GetxController {
           items: ['¼ cup fresh basil leaves'],
         ),
         InstructionModel(
-          step: 'Drizzle with olive oil and balsamic glaze. Season with sea salt and serve immediately.',
-          items: ['3 tbsp extra virgin olive oil', '2 tbsp balsamic glaze', 'sea salt to taste'],
+          step:
+              'Drizzle with olive oil and balsamic glaze. Season with sea salt and serve immediately.',
+          items: [
+            '3 tbsp extra virgin olive oil',
+            '2 tbsp balsamic glaze',
+            'sea salt to taste'
+          ],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 280, protein: '14g', carbs: '10g',
-        fat: '22g', fiber: '2g', sugar: '6g', sodium: '380mg',
+        calories: 280,
+        protein: '14g',
+        carbs: '10g',
+        fat: '22g',
+        fiber: '2g',
+        sugar: '6g',
+        sodium: '380mg',
       ),
     ),
     MealModel(
       id: 'veg7',
       name: 'Classic Margherita Pizza',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_margherita_pizza.jpeg',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_margherita_pizza.jpeg',
       isPro: true,
       duration: '50 minutes',
       servings: 4,
       cookware: ['Pizza stone or baking sheet', 'Rolling pin', 'Mixing bowl'],
       ingredients: [
-        IngredientModel(name: 'pizza dough', quantity: '1 ball (store-bought or homemade)'),
-        IngredientModel(name: 'san marzano tomatoes', quantity: '1 cup, crushed'),
+        IngredientModel(
+            name: 'pizza dough', quantity: '1 ball (store-bought or homemade)'),
+        IngredientModel(
+            name: 'san marzano tomatoes', quantity: '1 cup, crushed'),
         IngredientModel(name: 'fresh mozzarella', quantity: '200g, torn'),
         IngredientModel(name: 'fresh basil leaves', quantity: '¼ cup'),
         IngredientModel(name: 'olive oil', quantity: '2 tbsp'),
@@ -451,15 +527,18 @@ class MealPlanController extends GetxController {
       ],
       instructions: [
         InstructionModel(
-          step: 'Preheat oven to 500°F with pizza stone inside, if using. Roll out pizza dough on a floured surface.',
+          step:
+              'Preheat oven to 500°F with pizza stone inside, if using. Roll out pizza dough on a floured surface.',
           items: ['1 ball pizza dough'],
         ),
         InstructionModel(
-          step: 'Mix crushed tomatoes with minced garlic and a pinch of salt for the sauce.',
+          step:
+              'Mix crushed tomatoes with minced garlic and a pinch of salt for the sauce.',
           items: ['1 cup san marzano tomatoes', '1 clove garlic'],
         ),
         InstructionModel(
-          step: 'Spread sauce evenly over the dough, leaving a border for the crust.',
+          step:
+              'Spread sauce evenly over the dough, leaving a border for the crust.',
           items: [],
         ),
         InstructionModel(
@@ -467,16 +546,29 @@ class MealPlanController extends GetxController {
           items: ['200g fresh mozzarella', '2 tbsp olive oil'],
         ),
         InstructionModel(
-          step: 'Bake for 10-12 minutes until crust is golden and cheese is bubbly. Top with fresh basil before serving.',
+          step:
+              'Bake for 10-12 minutes until crust is golden and cheese is bubbly. Top with fresh basil before serving.',
           items: ['¼ cup fresh basil leaves'],
         ),
       ],
       nutrition: NutritionModel(
-        calories: 520, protein: '22g', carbs: '58g',
-        fat: '22g', fiber: '3g', sugar: '6g', sodium: '780mg',
+        calories: 520,
+        protein: '22g',
+        carbs: '58g',
+        fat: '22g',
+        fiber: '3g',
+        sugar: '6g',
+        sodium: '780mg',
       ),
     ),
   ];
+
+  static List<MealModel> get allMeals => [
+        ...mostPopular,
+        ...recentlyCreated,
+        ...recommendedPlan,
+        ...vegetarianMeals,
+      ];
 
   // ══════════════════════════════════════════
   //  RECENTLY CREATED
@@ -838,7 +930,7 @@ class MealPlanController extends GetxController {
           items: ['2 tbsp soy sauce', '1 inch piece ginger root'],
         ),
       ],
-      nutrition:  NutritionModel(
+      nutrition: NutritionModel(
         calories: 420,
         protein: '20g',
         carbs: '52g',
@@ -891,20 +983,20 @@ class MealPlanController extends GetxController {
   String _fmt(DateTime d) => '${_month(d.month)} ${d.day}';
 
   String _month(int m) => const [
-    '',
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ][m];
+        '',
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ][m];
 
   void prevWeek() => weekOffset.value--;
 

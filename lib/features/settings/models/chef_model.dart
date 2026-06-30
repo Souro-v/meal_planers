@@ -5,6 +5,7 @@ class ChefModel {
   final String bio;
   final String emoji;
   final int recipeCount;
+  final List<String> recipeIds;
 
   const ChefModel({
     required this.id,
@@ -13,5 +14,6 @@ class ChefModel {
     required this.bio,
     required this.emoji,
     required this.recipeCount,
+    this.recipeIds = const [],
   });
 }

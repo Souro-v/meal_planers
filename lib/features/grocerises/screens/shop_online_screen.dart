@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../app/themes/app_colors.dart';
 
 class ShopOnlineScreen extends StatefulWidget {
@@ -17,18 +18,38 @@ class _ShopOnlineScreenState extends State<ShopOnlineScreen> {
       name: 'Asda',
       color: Color(0xFF78BE20),
       letter: 'A',
+      url: 'https://groceries.asda.com',
     ),
     _StoreData(
       name: 'Ocado',
       color: Color(0xFFB5121B),
       letter: 'O',
+      url: 'https://www.ocado.com',
     ),
     _StoreData(
       name: 'Tesco',
       color: Color(0xFF004B97),
       letter: 'T',
+      url: 'https://www.tesco.com/groceries',
     ),
   ];
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      if (!mounted) return;
+      Get.snackbar(
+        'Error', 'Could not open the link.',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: AppColors.error,
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(16),
+        borderRadius: 12,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +110,7 @@ class _ShopOnlineScreenState extends State<ShopOnlineScreen> {
                       )),
                   trailing: const Icon(Icons.chevron_right,
                       color: AppColors.textSecondary),
-                  onTap: () {},
+                  onTap: () => _launchUrl(_stores[i].url),
                 ),
                 const Divider(
                     height: 1, indent: 24,
@@ -117,7 +138,17 @@ class _ShopOnlineScreenState extends State<ShopOnlineScreen> {
               child: SizedBox(
                 width: double.infinity, height: 48,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.snackbar(
+                      'Coming Soon',
+                      'More stores will be added soon!',
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: AppColors.primary,
+                      colorText: Colors.white,
+                      margin: const EdgeInsets.all(16),
+                      borderRadius: 12,
+                    );
+                  },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: AppColors.border),
                     shape: RoundedRectangleBorder(
@@ -213,7 +244,9 @@ class _ShopOnlineScreenState extends State<ShopOnlineScreen> {
 
             Center(
               child: GestureDetector(
-                onTap: () {},
+                onTap: () => _launchUrl(
+                  'mailto:support@mealtime.app?subject=Mealtime%20Shopping%20Feedback',
+                ),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -242,9 +275,11 @@ class _StoreData {
   final String name;
   final Color color;
   final String letter;
+  final String url;
   const _StoreData({
     required this.name,
     required this.color,
     required this.letter,
+    required this.url,
   });
 }
