@@ -250,9 +250,8 @@ class _GroceryTile extends StatelessWidget {
                   color: item.isChecked
                       ? AppColors.textHint
                       : AppColors.textPrimary,
-                  decoration: item.isChecked
-                      ? TextDecoration.lineThrough
-                      : null,
+                  decoration:
+                      item.isChecked ? TextDecoration.lineThrough : null,
                 ),
               ),
               if (item.hasAllergen) ...[

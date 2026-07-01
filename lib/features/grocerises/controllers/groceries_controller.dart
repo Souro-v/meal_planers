@@ -18,36 +18,52 @@ class GroceriesController extends GetxController {
     if (saved != null) {
       final list = (jsonDecode(saved) as List)
           .map((e) => GroceryItemModel(
-        id:          e['id'],
-        name:        e['name'],
-        quantity:    e['quantity'],
-        category:    e['category'],
-        isChecked:   e['isChecked'],
-        hasAllergen: e['hasAllergen'],
-      ))
+                id: e['id'],
+                name: e['name'],
+                quantity: e['quantity'],
+                category: e['category'],
+                isChecked: e['isChecked'],
+                hasAllergen: e['hasAllergen'],
+              ))
           .toList();
       items.addAll(list);
     } else {
       // Default items
       items.addAll([
-        GroceryItemModel(id: 'g1', name: 'lemon',
-            quantity: '½', category: 'Produce', isChecked: true),
-        GroceryItemModel(id: 'g2', name: 'lime',
-            quantity: '1', category: 'Produce'),
-        GroceryItemModel(id: 'g3', name: 'mango',
-            quantity: '½', category: 'Produce'),
-        GroceryItemModel(id: 'g4', name: 'orange',
-            quantity: '½', category: 'Produce'),
-        GroceryItemModel(id: 'g5', name: 'english cucumber',
-            quantity: '1', category: 'Produce', isChecked: true),
-        GroceryItemModel(id: 'g6', name: 'chicken breast',
-            quantity: '2', category: 'Meat', hasAllergen: true),
-        GroceryItemModel(id: 'g7', name: 'coconut milk',
-            quantity: '1', category: 'Canned', hasAllergen: true),
-        GroceryItemModel(id: 'g8', name: 'basmati rice',
-            quantity: '1', category: 'Grains'),
-        GroceryItemModel(id: 'g9', name: 'olive oil',
-            quantity: '1', category: 'Pantry'),
+        GroceryItemModel(
+            id: 'g1',
+            name: 'lemon',
+            quantity: '½',
+            category: 'Produce',
+            isChecked: true),
+        GroceryItemModel(
+            id: 'g2', name: 'lime', quantity: '1', category: 'Produce'),
+        GroceryItemModel(
+            id: 'g3', name: 'mango', quantity: '½', category: 'Produce'),
+        GroceryItemModel(
+            id: 'g4', name: 'orange', quantity: '½', category: 'Produce'),
+        GroceryItemModel(
+            id: 'g5',
+            name: 'english cucumber',
+            quantity: '1',
+            category: 'Produce',
+            isChecked: true),
+        GroceryItemModel(
+            id: 'g6',
+            name: 'chicken breast',
+            quantity: '2',
+            category: 'Meat',
+            hasAllergen: true),
+        GroceryItemModel(
+            id: 'g7',
+            name: 'coconut milk',
+            quantity: '1',
+            category: 'Canned',
+            hasAllergen: true),
+        GroceryItemModel(
+            id: 'g8', name: 'basmati rice', quantity: '1', category: 'Grains'),
+        GroceryItemModel(
+            id: 'g9', name: 'olive oil', quantity: '1', category: 'Pantry'),
       ]);
     }
   }
@@ -68,13 +84,12 @@ class GroceriesController extends GetxController {
     }
   }
 
-  void dismissAllergenWarning() =>
-      showAllergenWarning.value = false;
+  void dismissAllergenWarning() => showAllergenWarning.value = false;
 
   void addItem(String name) {
     items.add(GroceryItemModel(
-      id:       DateTime.now().millisecondsSinceEpoch.toString(),
-      name:     name,
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      name: name,
       quantity: '1',
       category: 'Other',
     ));
@@ -82,11 +97,16 @@ class GroceriesController extends GetxController {
   }
 
   void _saveToStorage() {
-    final list = items.map((e) => {
-      'id': e.id, 'name': e.name, 'quantity': e.quantity,
-      'category': e.category, 'isChecked': e.isChecked,
-      'hasAllergen': e.hasAllergen,
-    }).toList();
+    final list = items
+        .map((e) => {
+              'id': e.id,
+              'name': e.name,
+              'quantity': e.quantity,
+              'category': e.category,
+              'isChecked': e.isChecked,
+              'hasAllergen': e.hasAllergen,
+            })
+        .toList();
     StorageService.saveGroceries(jsonEncode(list));
   }
 }

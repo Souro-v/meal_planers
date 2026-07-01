@@ -17,7 +17,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'mp1',
       name: 'Brussels Sprouts, Mashed Potato & Sausage Bowl',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_brussels_sprouts_bowl.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_brussels_sprouts_bowl.png',
       isPro: true,
       duration: '35 minutes',
       servings: 2,
@@ -79,7 +80,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'mp2',
       name: 'Roasted Cauliflower & Black Bean Burrito Bowl with Cilantro',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_cauliflower_burrito_bowl.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_cauliflower_burrito_bowl.png',
       duration: '30 minutes',
       servings: 2,
       cookware: ['Baking sheet', 'Medium saucepan', 'Can opener'],
@@ -131,7 +133,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'mp3',
       name: 'Creamy Cashew Zucchini Vegan Sausage Pasta',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_cashew_zucchini_pasta.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_cashew_zucchini_pasta.png',
       duration: '25 minutes',
       servings: 2,
       cookware: ['Large pot', 'Blender', 'Large skillet', 'Colander'],
@@ -577,7 +580,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rc1',
       name: 'Indian Butter Chicken with Basmati Rice (Chicken Makhani)',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_butter_chicken.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_butter_chicken.png',
       duration: '40 minutes',
       servings: 4,
       cookware: ['Large skillet', 'Medium saucepan', 'Blender', 'Can opener'],
@@ -651,7 +655,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rc2',
       name: 'Greek Salad with Feta Cheese & Kalamata Olives',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_greek_salad.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_greek_salad.png',
       isPro: true,
       duration: '15 minutes',
       servings: 2,
@@ -713,7 +718,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rc3',
       name: 'Italian Pasta Tomato & Basil (Pomodoro)',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_italian_pasta.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_italian_pasta.png',
       duration: '20 minutes',
       servings: 2,
       cookware: ['Large pot', 'Large skillet', 'Colander', 'Wooden spoon'],
@@ -777,7 +783,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rp1',
       name: 'Avocado Toast with Poached Eggs',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_1.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_1.png',
       duration: '15 minutes',
       servings: 2,
       cookware: ['Small saucepan', 'Toaster', 'Slotted spoon'],
@@ -828,7 +835,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rp2',
       name: 'Teriyaki Salmon with Steamed Broccoli',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_2.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_2.png',
       duration: '25 minutes',
       servings: 2,
       cookware: ['Medium skillet', 'Steamer basket', 'Small saucepan'],
@@ -889,7 +897,8 @@ class MealPlanController extends GetxController {
     MealModel(
       id: 'rp3',
       name: 'Vegetable Stir Fry with Tofu & Brown Rice',
-      imageUrl: 'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_3.png',
+      imageUrl:
+          'https://res.cloudinary.com/dehjub5m1/image/upload/meal_plannner/meal_recommended_3.png',
       duration: '30 minutes',
       servings: 2,
       cookware: ['Large wok or skillet', 'Medium saucepan', 'Paper towels'],
