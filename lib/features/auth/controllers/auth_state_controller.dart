@@ -9,7 +9,6 @@ class AuthStateController extends GetxController {
     super.onInit();
     _checkAuthState();
   }
-
   Future<void> _checkAuthState() async {
     await Future.delayed(const Duration(milliseconds: 1500));
 
@@ -25,7 +24,6 @@ class AuthStateController extends GetxController {
 
     Get.offAllNamed(AppRoutes.home);
   }
-
   Future<void> logout() async {
     await StorageService.clearToken();
     await StorageService.clearUser();

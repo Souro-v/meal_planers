@@ -1,4 +1,6 @@
+
 import 'package:get/get.dart';
+import '../../meals/controllers/meal_plan_controller.dart';
 import '../../meals/models/meal_model.dart';
 import '../../../core/services/storage_service.dart';
 
@@ -12,10 +14,14 @@ class FavoritesController extends GetxController {
   }
 
   void _loadFromStorage() {
-    // favorite IDs load
-    final ids = StorageService.getFavoriteIds();
-    // TODO: API থেকে meal details fetch করে load করো
-    // local dummy data  match
+    final savedIds = StorageService.getFavoriteIds();
+    if (savedIds.isEmpty) return;
+
+    final matched = MealPlanController.allMeals
+        .where((meal) => savedIds.contains(meal.id))
+        .toList();
+
+    favoriteMeals.addAll(matched);
   }
 
   void toggleFavorite(MealModel meal) {
@@ -25,7 +31,8 @@ class FavoritesController extends GetxController {
     _saveToStorage();
   }
 
-  bool isFavorite(String id) => favoriteMeals.any((m) => m.id == id);
+  bool isFavorite(String id) =>
+      favoriteMeals.any((m) => m.id == id);
 
   void _saveToStorage() {
     final ids = favoriteMeals.map((m) => m.id).toList();

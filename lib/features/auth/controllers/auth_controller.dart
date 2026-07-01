@@ -117,7 +117,6 @@ class AuthController extends GetxController {
       isSocialLoading.value = false;
     }
   }
-
   Future<void> signInWithFacebook() async {
     isSocialLoading.value = true;
     try {
@@ -133,8 +132,6 @@ class AuthController extends GetxController {
       isSocialLoading.value = false;
     }
   }
-
-  // ════════════════════════════════════════
   //  HELPERS
   // ════════════════════════════════════════
   void _showError(String message) {
